@@ -22,7 +22,7 @@
 
 #import "PasswordGenerator.h"
 
-@interface LegacyPasswordGenerator: OFObject <PasswordGenerator>
+@interface NewPasswordGenerator: OFObject <PasswordGenerator>
 {
 	size_t _length;
 	OFString *_site;

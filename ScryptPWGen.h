@@ -25,6 +25,6 @@
 @interface ScryptPWGen: OFObject <OFApplicationDelegate>
 {
 	size_t _length;
-	bool _repeat;
+	bool _legacy, _repeat;
 }
 @end

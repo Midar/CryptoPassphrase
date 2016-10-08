@@ -20,13 +20,48 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "PasswordGenerator.h"
+#import "NewPasswordGenerator.h"
 
-@interface LegacyPasswordGenerator: OFObject <PasswordGenerator>
+@implementation NewPasswordGenerator
+@synthesize length = _length, site = _site, passphrase = _passphrase;
+@synthesize output = _output;
+
++ (instancetype)generator
 {
-	size_t _length;
-	OFString *_site;
-	const char *_passphrase;
-	unsigned char *_output;
+	return [[[self alloc] init] autorelease];
+}
+
+- init
+{
+	self = [super init];
+
+	_length = 16;
+
+	return self;
+}
+
+- (void)derivePassword
+{
+	OFSHA384Hash *siteHash = [OFSHA384Hash cryptoHash];
+	[siteHash updateWithBuffer: [_site UTF8String]
+			    length: [_site UTF8StringLength]];
+
+	if (_output != NULL) {
+		of_explicit_memset(_output, 0, _length);
+		[self freeMemory: _output];
+	}
+
+	_output = [self allocMemoryWithSize: _length + 1];
+
+	of_scrypt(8, 524288, 2, [siteHash digest],
+	    [[siteHash class] digestSize], _passphrase, strlen(_passphrase),
+	    _output, _length);
+
+	for (size_t i = 0; i < _length; i++)
+		_output[i] =
+		    "0123456789"
+		    "abcdefghijklmnopqrstuvwxyz"
+		    "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+		    ".!"[_output[i] & 0x3F];
 }
 @end

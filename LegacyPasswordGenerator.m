@@ -23,8 +23,7 @@
 #import "LegacyPasswordGenerator.h"
 
 @implementation LegacyPasswordGenerator
-@synthesize length = _length, site = _site, passphrase = _passphrase;
-@synthesize output = _output;
+@synthesize site = _site, passphrase = _passphrase, output = _output;
 
 + (instancetype)generator
 {
@@ -38,6 +37,19 @@
 	_length = 16;
 
 	return self;
+}
+
+- (void)setLength: (size_t)length
+{
+	if (length < 3)
+		@throw [OFInvalidArgumentException exception];
+
+	_length = length;
+}
+
+- (size_t)length
+{
+	return _length;
 }
 
 - (void)derivePassword

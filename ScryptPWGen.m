@@ -23,6 +23,7 @@
 #include <unistd.h>
 
 #import "ScryptPWGen.h"
+#import "NewPasswordGenerator.h"
 #import "LegacyPasswordGenerator.h"
 
 OF_APPLICATION_DELEGATE(ScryptPWGen)
@@ -39,6 +40,8 @@ showHelp(OFStream *output, bool verbose)
 		    @"Options:\n"
 		    @"    -h  --help    Show this help\n"
 		    @"    -l  --length  Length for the derived password\n"
+		    @"    -L  --legacy  Use the legacy algorithm "
+		    @"(compatible with scrypt-genpass)\n"
 		    @"    -r  --repeat  Repeat input\n"];
 }
 
@@ -49,13 +52,13 @@ showHelp(OFStream *output, bool verbose)
 	const of_options_parser_option_t options[] = {
 		{ 'h', @"help", 0, NULL, NULL },
 		{ 'l', @"length", 1, NULL, &lengthStr },
+		{ 'L', @"legacy", 0, &_legacy, NULL },
 		{ 'r', @"repeat", 0, &_repeat, NULL },
 		{ '\0', nil, 0, NULL, NULL }
 	};
 	OFOptionsParser *optionsParser =
 	    [OFOptionsParser parserWithOptions: options];
 	of_unichar_t option;
-	size_t length;
 	char *passphrase;
 	OFString *site, *prompt;
 
@@ -98,13 +101,33 @@ showHelp(OFStream *output, bool verbose)
 		}
 	}
 
-	if (lengthStr != nil) {
-		@try {
-			length = (size_t)[lengthStr decimalValue];
+	if ([[optionsParser remainingArguments] count] != 1) {
+		showHelp(of_stderr, false);
 
-			if (length < 3)
-				@throw [OFInvalidFormatException exception];
+		[OFApplication terminateWithStatus: 1];
+	}
+
+	site = [[optionsParser remainingArguments] firstObject];
+	prompt = [OFString stringWithFormat: @"Passphrase for site \"%@\": ",
+					     site];
+
+	id <PasswordGenerator> generator = (_legacy
+	    ? [LegacyPasswordGenerator generator]
+	    : [NewPasswordGenerator generator]);
+	generator.site = [[optionsParser remainingArguments] firstObject];
+
+	if (lengthStr != nil) {
+		bool invalid = false;
+
+		@try {
+			generator.length = (size_t)[lengthStr decimalValue];
+		} @catch (OFInvalidArgumentException *e) {
+			invalid = true;
 		} @catch (OFInvalidFormatException *e) {
+			invalid = true;
+		}
+
+		if (invalid) {
 			[of_stderr writeFormat:
 			    @"%@: Invalid length: %@\n",
 			    [OFApplication programName], lengthStr];
@@ -112,20 +135,6 @@ showHelp(OFStream *output, bool verbose)
 			[OFApplication terminateWithStatus: 1];
 		}
 	}
-
-	if ([[optionsParser remainingArguments] count] != 1) {
-		showHelp(of_stderr, false);
-
-		[OFApplication terminateWithStatus: 1];
-	}
-
-	prompt = [OFString stringWithFormat: @"Passphrase for site \"%@\": ",
-					     site];
-
-	LegacyPasswordGenerator *generator =
-	    [LegacyPasswordGenerator generator];
-	generator.length = length;
-	generator.site = [[optionsParser remainingArguments] firstObject];
 
 	passphrase = getpass(
 	    [prompt cStringWithEncoding: [OFSystemInfo native8BitEncoding]]);
