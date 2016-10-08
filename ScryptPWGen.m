@@ -60,7 +60,7 @@ showHelp(OFStream *output, bool verbose)
 	    [OFOptionsParser parserWithOptions: options];
 	of_unichar_t option;
 	char *passphrase;
-	OFString *site, *prompt;
+	OFString *prompt;
 
 	while ((option = [optionsParser nextOption]) != '\0') {
 		switch (option) {
@@ -107,10 +107,6 @@ showHelp(OFStream *output, bool verbose)
 		[OFApplication terminateWithStatus: 1];
 	}
 
-	site = [[optionsParser remainingArguments] firstObject];
-	prompt = [OFString stringWithFormat: @"Passphrase for site \"%@\": ",
-					     site];
-
 	id <PasswordGenerator> generator = (_legacy
 	    ? [LegacyPasswordGenerator generator]
 	    : [NewPasswordGenerator generator]);
@@ -136,9 +132,40 @@ showHelp(OFStream *output, bool verbose)
 		}
 	}
 
+
+	prompt = [OFString stringWithFormat: @"Passphrase for site \"%@\": ",
+					     generator.site];
 	passphrase = getpass(
 	    [prompt cStringWithEncoding: [OFSystemInfo native8BitEncoding]]);
 	@try {
+		if (_repeat) {
+			char *passphraseCopy = of_strdup(passphrase);
+
+			if (passphraseCopy == NULL)
+				@throw [OFOutOfMemoryException exception];
+
+			@try {
+				of_string_encoding_t encoding =
+				    [OFSystemInfo native8BitEncoding];
+
+				prompt = [OFString stringWithFormat:
+				    @"Repeat passphrase for site \"%@\": ",
+				    generator.site];
+				passphrase = getpass(
+				    [prompt cStringWithEncoding: encoding]);
+
+				if (strcmp(passphrase, passphraseCopy) != 0) {
+					[of_stderr writeString:
+					    @"Passphrases do not match!\n"];
+					[OFApplication terminateWithStatus: 1];
+				}
+			} @finally {
+				of_explicit_memset(passphraseCopy, 0,
+				    strlen(passphraseCopy));
+				free(passphraseCopy);
+			}
+		}
+
 		generator.passphrase = passphrase;
 
 		[generator derivePassword];
