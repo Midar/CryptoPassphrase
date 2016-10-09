@@ -1,3 +1,8 @@
 *.o
 *~
 scrypt-pwgen
+iOS/DerivedData
+iOS/ObjFW.framework
+iOS/ObjFW_Bridge.framework
+iOS/scrypt-pwgen.xcodeproj/project.xcworkspace
+iOS/scrypt-pwgen.xcodeproj/xcuserdata
