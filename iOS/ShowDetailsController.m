@@ -65,17 +65,20 @@ clearNSMutableString(NSMutableString *string)
 - (void)viewWillAppear: (BOOL)animated
 {
 	SiteStorage *siteStorage = self.mainViewController.siteStorage;
-	NSInteger row =
-	    self.mainViewController.tableView.indexPathForSelectedRow.row;
+	NSIndexPath *indexPath =
+	    self.mainViewController.tableView.indexPathForSelectedRow;
 
 	[_name release];
-	_name = [siteStorage.sites[row] retain];
+	_name = [siteStorage.sites[indexPath.row] retain];
 	_length = [siteStorage lengthForSite: _name];
 	_legacy = [siteStorage isSiteLegacy: _name];
 
 	self.nameField.text = [_name NSObject];
 	self.lengthField.text = [NSString stringWithFormat: @"%zu", _length];
 	self.legacySwitch.on = _legacy;
+
+	[self.mainViewController.tableView deselectRowAtIndexPath: indexPath
+							 animated: YES];
 }
 
 - (void)viewDidAppear: (BOOL)animated
