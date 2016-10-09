@@ -125,7 +125,9 @@ clearNSMutableString(NSMutableString *string)
 	[alert addAction:
 	    [UIAlertAction actionWithTitle: @"OK"
 				     style: UIAlertActionStyleDefault
-				   handler: nil]];
+				   handler: ^ (UIAlertAction *action) {
+		[self.navigationController popViewControllerAnimated: YES];
+	}]];
 
 	[self presentViewController: alert
 			   animated: YES
@@ -143,11 +145,13 @@ clearNSMutableString(NSMutableString *string)
 	[alert addAction:
 	    [UIAlertAction actionWithTitle: @"OK"
 				     style: UIAlertActionStyleDefault
-				   handler: nil]];
+				   handler: ^ (UIAlertAction *action) {
+		[self.navigationController popViewControllerAnimated: YES];
+	}]];
 
 	[self presentViewController: alert
 			   animated: YES
-			 completion:  ^ {
+			 completion: ^ {
 		clearNSMutableString(password);
 	}];
 }
