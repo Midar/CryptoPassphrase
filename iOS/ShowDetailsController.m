@@ -75,7 +75,7 @@ clearNSMutableString(NSMutableString *string)
 
 	self.nameField.text = [_name NSObject];
 	self.lengthField.text = [NSString stringWithFormat: @"%zu", _length];
-	self.legacySwitch.enabled = _legacy;
+	self.legacySwitch.on = _legacy;
 }
 
 - (void)viewDidAppear: (BOOL)animated

@@ -88,7 +88,7 @@ showAlert(UIViewController *controller, NSString *title, NSString *message)
 	[self.mainViewController.siteStorage
 	    setSite: name
 	     length: length
-	     legacy: self.legacySwitch.enabled];
+	     legacy: self.legacySwitch.on];
 
 	[self.mainViewController.tableView reloadData];
 
