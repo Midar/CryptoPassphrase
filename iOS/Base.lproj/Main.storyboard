@@ -61,6 +61,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sites" id="yTB-Ks-uRL">
+                        <barButtonItem key="leftBarButtonItem" title="About" id="XRD-dt-33a">
+                            <connections>
+                                <segue destination="MZ3-iZ-Dsf" kind="show" id="htu-4b-0MW"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="p8C-bd-BZ5">
                             <connections>
                                 <segue destination="mTn-Td-fIF" kind="show" identifier="addSite" id="M4C-yt-H0Q"/>
@@ -75,6 +80,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yxW-Ki-6KI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1060" y="-516"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="rga-fS-ski">
+            <objects>
+                <viewController title="About" id="MZ3-iZ-Dsf" customClass="AboutController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8k0-QJ-gsC"/>
+                        <viewControllerLayoutGuide type="bottom" id="NSX-G5-c03"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VbJ-Zv-Wf9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2xd-QR-99d">
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="MZ3-iZ-Dsf" id="uKq-6T-ltJ"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2xd-QR-99d" firstAttribute="bottom" secondItem="NSX-G5-c03" secondAttribute="top" id="EFd-yB-4R5"/>
+                            <constraint firstAttribute="trailing" secondItem="2xd-QR-99d" secondAttribute="trailing" id="boI-LE-LQJ"/>
+                            <constraint firstItem="2xd-QR-99d" firstAttribute="top" secondItem="8k0-QJ-gsC" secondAttribute="bottom" id="efI-Ir-h8E"/>
+                            <constraint firstItem="2xd-QR-99d" firstAttribute="leading" secondItem="VbJ-Zv-Wf9" secondAttribute="leading" id="g3c-jW-5tJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="About" id="AZw-Xn-hgm"/>
+                    <connections>
+                        <outlet property="webView" destination="2xd-QR-99d" id="Drh-jE-AAl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VTJ-jm-hyt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1992.8" y="326.98650674662673"/>
         </scene>
         <!--Add Site Controller-->
         <scene sceneID="IxZ-dn-p6h">
@@ -419,7 +460,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o5r-z3-hVF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1992.8" y="-265.81709145427288"/>
+            <point key="canvasLocation" x="1993" y="-423"/>
         </scene>
     </scenes>
 </document>

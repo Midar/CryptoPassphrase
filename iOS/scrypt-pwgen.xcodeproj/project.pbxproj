@@ -14,6 +14,7 @@
 		4B2E52EA1DA942840040D091 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B2E52E81DA942840040D091 /* Main.storyboard */; };
 		4B2E52EC1DA942840040D091 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B2E52EB1DA942840040D091 /* Assets.xcassets */; };
 		4B2E52EF1DA942840040D091 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B2E52ED1DA942840040D091 /* LaunchScreen.storyboard */; };
+		4B82D1151DAAAFCE00F32B2F /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B82D1141DAAAFCE00F32B2F /* AboutController.m */; };
 		4BA115D21DA9432D007ED4EA /* LegacyPasswordGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA115CE1DA9432D007ED4EA /* LegacyPasswordGenerator.m */; settings = {COMPILER_FLAGS = "-fconstant-string-class=OFConstantString -fno-constant-cfstrings"; }; };
 		4BA115D31DA9432D007ED4EA /* NewPasswordGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA115D01DA9432D007ED4EA /* NewPasswordGenerator.m */; settings = {COMPILER_FLAGS = "-fconstant-string-class=OFConstantString -fno-constant-cfstrings"; }; };
 		4BA115D61DA94390007ED4EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA115D51DA94390007ED4EA /* UIKit.framework */; };
@@ -54,6 +55,8 @@
 		4B2E52EB1DA942840040D091 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B2E52EE1DA942840040D091 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B2E52F01DA942840040D091 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B82D1131DAAAFCE00F32B2F /* AboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
+		4B82D1141DAAAFCE00F32B2F /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
 		4BA115CD1DA9432D007ED4EA /* LegacyPasswordGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LegacyPasswordGenerator.h; path = ../LegacyPasswordGenerator.h; sourceTree = "<group>"; };
 		4BA115CE1DA9432D007ED4EA /* LegacyPasswordGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LegacyPasswordGenerator.m; path = ../LegacyPasswordGenerator.m; sourceTree = "<group>"; };
 		4BA115CF1DA9432D007ED4EA /* NewPasswordGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewPasswordGenerator.h; path = ../NewPasswordGenerator.h; sourceTree = "<group>"; };
@@ -106,6 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				4B2E52EB1DA942840040D091 /* Assets.xcassets */,
+				4B82D1131DAAAFCE00F32B2F /* AboutController.h */,
+				4B82D1141DAAAFCE00F32B2F /* AboutController.m */,
 				4BB3CDFB1DA9764300FEE5ED /* AddSiteController.h */,
 				4BB3CDFC1DA9764300FEE5ED /* AddSiteController.m */,
 				4B2E52E21DA942840040D091 /* AppDelegate.h */,
@@ -220,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B82D1151DAAAFCE00F32B2F /* AboutController.m in Sources */,
 				4BB3CDFD1DA9764300FEE5ED /* AddSiteController.m in Sources */,
 				4B2E52E41DA942840040D091 /* AppDelegate.m in Sources */,
 				4BA115D21DA9432D007ED4EA /* LegacyPasswordGenerator.m in Sources */,
