@@ -402,7 +402,14 @@
                             <outlet property="delegate" destination="ayJ-fs-aIU" id="af9-4J-p1D"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="xhc-og-4ho"/>
+                    <navigationItem key="navigationItem" id="xhc-og-4ho">
+                        <barButtonItem key="rightBarButtonItem" title="Remove" id="vzP-cA-Wig">
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="remove:" destination="ayJ-fs-aIU" id="0mA-Jx-Oqa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="legacySwitch" destination="qW3-51-hZP" id="NsI-F3-hVQ"/>
                         <outlet property="lengthField" destination="Lp1-jC-8cn" id="05B-m5-JnB"/>

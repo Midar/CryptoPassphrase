@@ -183,4 +183,29 @@ clearNSMutableString(NSMutableString *string)
 
 	return password;
 }
+
+- (IBAction)remove: (id)sender
+{
+	UIAlertController *alert = [UIAlertController
+	    alertControllerWithTitle: @"Remove Site?"
+			     message: @"Do you want to remove this site?"
+		      preferredStyle: UIAlertControllerStyleAlert];
+	[alert addAction:
+	    [UIAlertAction actionWithTitle: @"No"
+				     style: UIAlertActionStyleCancel
+				   handler: nil]];
+	[alert addAction:
+	    [UIAlertAction actionWithTitle: @"Yes"
+				     style: UIAlertActionStyleDestructive
+				   handler: ^ (UIAlertAction *action) {
+		[self.mainViewController.siteStorage removeSite: _name];
+		[self.mainViewController.tableView reloadData];
+
+		[self.navigationController popViewControllerAnimated: YES];
+	}]];
+
+	[self presentViewController: alert
+			   animated: YES
+			 completion: nil];
+}
 @end

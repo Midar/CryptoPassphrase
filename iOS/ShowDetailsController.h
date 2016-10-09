@@ -37,4 +37,6 @@
 @property (retain, nonatomic) IBOutlet UISwitch *legacySwitch;
 @property (retain, nonatomic) IBOutlet UITextField *passphraseField;
 @property (retain) MainViewController *mainViewController;
+
+- (IBAction)remove: (id)sender;
 @end
