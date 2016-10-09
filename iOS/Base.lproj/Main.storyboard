@@ -462,5 +462,40 @@
             </objects>
             <point key="canvasLocation" x="1993" y="-423"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="8JA-Zd-1zR">
+            <objects>
+                <viewController storyboardIdentifier="activityIndicator" id="asG-zz-a8o" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hu7-uJ-ly6"/>
+                        <viewControllerLayoutGuide type="bottom" id="vvJ-kn-Vjf"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.90000000000000002" contentMode="scaleToFill" id="c3D-Ze-5hZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Qe7-Bk-J1n"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generating…" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXF-vs-Gda">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="101" id="jwK-5C-D2D"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="Qe7-Bk-J1n" firstAttribute="centerY" secondItem="c3D-Ze-5hZ" secondAttribute="centerY" id="9Lb-iu-cD0"/>
+                            <constraint firstItem="Qe7-Bk-J1n" firstAttribute="centerX" secondItem="c3D-Ze-5hZ" secondAttribute="centerX" id="DYg-1r-kfn"/>
+                            <constraint firstItem="Qe7-Bk-J1n" firstAttribute="centerX" secondItem="gXF-vs-Gda" secondAttribute="centerX" id="d15-94-nf5"/>
+                            <constraint firstItem="gXF-vs-Gda" firstAttribute="top" secondItem="Qe7-Bk-J1n" secondAttribute="bottom" constant="8" symbolic="YES" id="n3a-cK-5jh"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VFj-Pa-4qu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2896.8000000000002" y="-423.23838080959524"/>
+        </scene>
     </scenes>
 </document>

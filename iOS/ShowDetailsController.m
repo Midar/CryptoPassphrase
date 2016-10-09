@@ -31,7 +31,7 @@
 #import "LegacyPasswordGenerator.h"
 
 @interface ShowDetailsController ()
-- (NSMutableString*)_generate;
+- (void)_generateWithCallback: (void(^)(NSMutableString*))block;
 - (void)_generateAndCopy;
 - (void)_generateAndShow;
 @end
@@ -113,82 +113,94 @@ clearNSMutableString(NSMutableString *string)
 
 - (void)_generateAndCopy
 {
-	NSMutableString *password = [self _generate];
+	[self _generateWithCallback: ^ (NSMutableString *password) {
+		UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
+		pasteBoard.string = password;
 
-	UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
-	pasteBoard.string = password;
+		clearNSMutableString(password);
 
-	clearNSMutableString(password);
+		UIAlertController *alert = [UIAlertController
+		    alertControllerWithTitle: @"Password Generated"
+				     message: @"The password has been copied "
+					      @"into the clipboard."
+			      preferredStyle: UIAlertControllerStyleAlert];
+		[alert addAction:
+		    [UIAlertAction actionWithTitle: @"OK"
+					     style: UIAlertActionStyleDefault
+					   handler: ^ (UIAlertAction *action) {
+			[self.navigationController popViewControllerAnimated: YES];
+		}]];
 
-	UIAlertController *alert = [UIAlertController
-	    alertControllerWithTitle: @"Password Generated"
-			     message: @"The password has been copied into the "
-				      @"clipboard."
-		      preferredStyle: UIAlertControllerStyleAlert];
-	[alert addAction:
-	    [UIAlertAction actionWithTitle: @"OK"
-				     style: UIAlertActionStyleDefault
-				   handler: ^ (UIAlertAction *action) {
-		[self.navigationController popViewControllerAnimated: YES];
-	}]];
-
-	[self presentViewController: alert
-			   animated: YES
-			 completion: nil];
+		[self presentViewController: alert
+				   animated: YES
+				 completion: nil];
+	}];
 }
 
 - (void)_generateAndShow
 {
-	NSMutableString *password = [self _generate];
+	[self _generateWithCallback: ^ (NSMutableString *password) {
+		UIAlertController *alert = [UIAlertController
+		    alertControllerWithTitle: @"Generated Passphrase"
+				     message: password
+			      preferredStyle: UIAlertControllerStyleAlert];
+		[alert addAction:
+		    [UIAlertAction actionWithTitle: @"OK"
+					     style: UIAlertActionStyleDefault
+					   handler: ^ (UIAlertAction *action) {
+			[self.navigationController
+			    popViewControllerAnimated: YES];
+		}]];
 
-	UIAlertController *alert = [UIAlertController
-	    alertControllerWithTitle: @"Generated Passphrase"
-			     message: password
-		      preferredStyle: UIAlertControllerStyleAlert];
-	[alert addAction:
-	    [UIAlertAction actionWithTitle: @"OK"
-				     style: UIAlertActionStyleDefault
-				   handler: ^ (UIAlertAction *action) {
-		[self.navigationController popViewControllerAnimated: YES];
-	}]];
-
-	[self presentViewController: alert
-			   animated: YES
-			 completion: ^ {
-		clearNSMutableString(password);
+		[self presentViewController: alert
+				   animated: YES
+				 completion: ^ {
+			clearNSMutableString(password);
+		}];
 	}];
 }
 
-- (NSMutableString*)_generate
+- (void)_generateWithCallback: (void(^)(NSMutableString*))block
 {
-	id <PasswordGenerator> generator;
-	char *passphrase;
+	UIStoryboard *mainStoryboard =
+	[UIStoryboard storyboardWithName: @"Main"
+				  bundle: nil];
+	UIViewController *activityController = [mainStoryboard
+	    instantiateViewControllerWithIdentifier: @"activityIndicator"];
+	[self.navigationController.view addSubview: activityController.view];
 
-	if (_legacy)
-		generator = [LegacyPasswordGenerator generator];
-	else
-		generator = [NewPasswordGenerator generator];
+	dispatch_async(dispatch_get_global_queue(
+	    DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
+		id <PasswordGenerator> generator;
+		char *passphrase;
 
-	generator.site = _name;
-	generator.length = _length;
+		if (_legacy)
+			generator = [LegacyPasswordGenerator generator];
+		else
+			generator = [NewPasswordGenerator generator];
 
-	passphrase = of_strdup([self.passphraseField.text UTF8String]);
-	@try {
-		self.passphraseField.text = @"";
-		generator.passphrase = passphrase;
+		generator.site = _name;
+		generator.length = _length;
 
-		[generator derivePassword];
-	} @finally {
-		of_explicit_memset(passphrase, 0, strlen(passphrase));
-		free(passphrase);
-	}
+		passphrase = of_strdup([self.passphraseField.text UTF8String]);
+		@try {
+			self.passphraseField.text = @"";
+			generator.passphrase = passphrase;
 
-	NSMutableString *password = [NSMutableString
-	    stringWithUTF8String: (char*)generator.output];
-	of_explicit_memset(generator.output, 0,
-	    strlen((char*)generator.output));
+			[generator derivePassword];
+		} @finally {
+			of_explicit_memset(passphrase, 0, strlen(passphrase));
+			free(passphrase);
+		}
 
-	return password;
+		NSMutableString *password = [NSMutableString
+		    stringWithUTF8String: (char*)generator.output];
+		of_explicit_memset(generator.output, 0,
+		    strlen((char*)generator.output));
+
+		activityController.view.hidden = YES;
+		block(password);
+	});
 }
 
 - (IBAction)remove: (id)sender
