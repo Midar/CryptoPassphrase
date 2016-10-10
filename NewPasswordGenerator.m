@@ -59,9 +59,9 @@
 
 	for (size_t i = 0; i < _length; i++)
 		_output[i] =
-		    "0123456789"
-		    "abcdefghijklmnopqrstuvwxyz"
-		    "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-		    ".!"[_output[i] & 0x3F];
+		    "123456789"
+		    "abcdefghijkmnopqrstuvwxyz"
+		    "ABCDEFGHJKLMNPQRSTUVWXYZ"
+		    "#$%-=?"[_output[i] & 0x3F];
 }
 @end

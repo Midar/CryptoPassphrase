@@ -128,7 +128,8 @@ clearNSMutableString(NSMutableString *string)
 		    [UIAlertAction actionWithTitle: @"OK"
 					     style: UIAlertActionStyleDefault
 					   handler: ^ (UIAlertAction *action) {
-			[self.navigationController popViewControllerAnimated: YES];
+			[self.navigationController
+			    popViewControllerAnimated: YES];
 		}]];
 
 		[self presentViewController: alert
