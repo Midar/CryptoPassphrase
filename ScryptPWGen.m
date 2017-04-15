@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2016, Jonathan Schleifer <js@heap.zone>
+ * Copyright (c) 2016, 2017, Jonathan Schleifer <js@heap.zone>
  *
- * https://heap.zone/git/?p=scrypt-pwgen.git
+ * https://heap.zone/git/scrypt-pwgen.git
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
