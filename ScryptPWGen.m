@@ -117,9 +117,9 @@ showHelp(OFStream *output, bool verbose)
 
 		@try {
 			generator.length = (size_t)[lengthStr decimalValue];
-		} @catch (OFInvalidArgumentException *e) {
-			invalid = true;
 		} @catch (OFInvalidFormatException *e) {
+			invalid = true;
+		} @catch (OFOutOfRangeException *e) {
 			invalid = true;
 		}
 
@@ -136,7 +136,7 @@ showHelp(OFStream *output, bool verbose)
 	prompt = [OFString stringWithFormat: @"Passphrase for site \"%@\": ",
 					     generator.site];
 	passphrase = getpass(
-	    [prompt cStringWithEncoding: [OFSystemInfo native8BitEncoding]]);
+	    [prompt cStringWithEncoding: [OFLocalization encoding]]);
 	@try {
 		if (_repeat) {
 			char *passphraseCopy = of_strdup(passphrase);
@@ -146,7 +146,7 @@ showHelp(OFStream *output, bool verbose)
 
 			@try {
 				of_string_encoding_t encoding =
-				    [OFSystemInfo native8BitEncoding];
+				    [OFLocalization encoding];
 
 				prompt = [OFString stringWithFormat:
 				    @"Repeat passphrase for site \"%@\": ",
