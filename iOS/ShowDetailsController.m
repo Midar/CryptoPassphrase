@@ -31,7 +31,7 @@
 #import "LegacyPasswordGenerator.h"
 
 @interface ShowDetailsController ()
-- (void)_generateWithCallback: (void(^)(NSMutableString*))block;
+- (void)_generateWithCallback: (void (^)(NSMutableString *))block;
 - (void)_generateAndCopy;
 - (void)_generateAndShow;
 @end
@@ -86,14 +86,14 @@ clearNSMutableString(NSMutableString *string)
 	[self.passphraseField becomeFirstResponder];
 }
 
-- (BOOL)textFieldShouldReturn: (UITextField*)textField
+- (BOOL)textFieldShouldReturn: (UITextField *)textField
 {
 	[textField resignFirstResponder];
 	return NO;
 }
 
--	  (void)tableView: (UITableView*)tableView
-  didSelectRowAtIndexPath: (NSIndexPath*)indexPath
+-	  (void)tableView: (UITableView *)tableView
+  didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 {
 	[self.passphraseField resignFirstResponder];
 	[tableView deselectRowAtIndexPath: indexPath
@@ -161,7 +161,7 @@ clearNSMutableString(NSMutableString *string)
 	}];
 }
 
-- (void)_generateWithCallback: (void(^)(NSMutableString*))block
+- (void)_generateWithCallback: (void (^)(NSMutableString *))block
 {
 	UIStoryboard *mainStoryboard =
 	[UIStoryboard storyboardWithName: @"Main"
@@ -195,9 +195,9 @@ clearNSMutableString(NSMutableString *string)
 		}
 
 		NSMutableString *password = [NSMutableString
-		    stringWithUTF8String: (char*)generator.output];
+		    stringWithUTF8String: (char *)generator.output];
 		of_explicit_memset(generator.output, 0,
-		    strlen((char*)generator.output));
+		    strlen((char *)generator.output));
 
 		activityController.view.hidden = YES;
 		block(password);

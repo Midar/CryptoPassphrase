@@ -25,18 +25,19 @@
 @interface SiteStorage: OFObject
 {
 	OFString *_path;
-	OFMutableDictionary <OFString*, OFDictionary <OFNumber*, OFNumber*>*>
+	OFMutableDictionary<OFString *, OFDictionary<OFNumber *, OFNumber *> *>
 	    *_storage;
 	OFArray *_sites;
 }
 
-- (OFArray*)sites;
+@property (readonly, nonatomic) OFArray<OFString *> *sites;
+
 - (size_t)sitesCount;
-- (bool)hasSite: (OFString*)name;
-- (size_t)lengthForSite: (OFString*)name;
-- (bool)isSiteLegacy: (OFString*)name;
-- (void)setSite: (OFString*)site
+- (bool)hasSite: (OFString *)name;
+- (size_t)lengthForSite: (OFString *)name;
+- (bool)isSiteLegacy: (OFString *)name;
+- (void)setSite: (OFString *)site
 	 length: (size_t)length
 	 legacy: (bool)legacy;
-- (void)removeSite: (OFString*)name;
+- (void)removeSite: (OFString *)name;
 @end

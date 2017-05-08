@@ -84,7 +84,7 @@ static OFNumber *lengthField, *legacyField;
 	[super dealloc];
 }
 
-- (OFArray*)sites
+- (OFArray<OFString *> *)sites
 {
 	void *pool = objc_autoreleasePoolPush();
 	OFArray *sites = [[_storage allKeys] sortedArray];
@@ -99,12 +99,12 @@ static OFNumber *lengthField, *legacyField;
 	return [_storage count];
 }
 
-- (bool)hasSite: (OFString*)name
+- (bool)hasSite: (OFString *)name
 {
 	return (_storage[name] != nil);
 }
 
-- (size_t)lengthForSite: (OFString*)name
+- (size_t)lengthForSite: (OFString *)name
 {
 	OFDictionary *site = _storage[name];
 
@@ -114,7 +114,7 @@ static OFNumber *lengthField, *legacyField;
 	return [site[lengthField] sizeValue];
 }
 
-- (bool)isSiteLegacy: (OFString*)name
+- (bool)isSiteLegacy: (OFString *)name
 {
 	OFDictionary *site = _storage[name];
 
@@ -124,7 +124,7 @@ static OFNumber *lengthField, *legacyField;
 	return [site[legacyField] boolValue];
 }
 
-- (void)setSite: (OFString*)site
+- (void)setSite: (OFString *)site
 	 length: (size_t)length
 	 legacy: (bool)legacy
 {
@@ -139,7 +139,7 @@ static OFNumber *lengthField, *legacyField;
 	objc_autoreleasePoolPop(pool);
 }
 
-- (void)removeSite: (OFString*)name
+- (void)removeSite: (OFString *)name
 {
 	[_storage removeObjectForKey: name];
 	[self _update];

@@ -23,5 +23,5 @@
 @import UIKit;
 
 @interface AboutController: UIViewController <UIWebViewDelegate>
-@property (retain, nonatomic) IBOutlet UIWebView *webView;
+@property (nonatomic, retain) IBOutlet UIWebView *webView;
 @end

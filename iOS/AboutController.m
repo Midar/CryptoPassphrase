@@ -80,8 +80,8 @@ static NSString *aboutHTMLTemplate =
 	[super dealloc];
 }
 
--	       (BOOL)webView: (UIWebView*)webView
-  shouldStartLoadWithRequest: (NSURLRequest*)request
+-	       (BOOL)webView: (UIWebView *)webView
+  shouldStartLoadWithRequest: (NSURLRequest *)request
 	      navigationType: (UIWebViewNavigationType)navigationType
 {
 	if (navigationType == UIWebViewNavigationTypeLinkClicked) {

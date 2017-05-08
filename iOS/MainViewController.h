@@ -27,5 +27,5 @@
 @interface MainViewController: UIViewController <UITableViewDelegate,
     UITableViewDataSource>
 @property (retain) SiteStorage *siteStorage;
-@property (retain, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 @end

@@ -41,14 +41,14 @@
 	[super dealloc];
 }
 
--  (NSInteger)tableView: (UITableView*)tableView
+-  (NSInteger)tableView: (UITableView *)tableView
   numberOfRowsInSection: (NSInteger)section
 {
 	return [self.siteStorage sitesCount];
 }
 
-- (UITableViewCell*)tableView: (UITableView*)tableView
-	cellForRowAtIndexPath: (NSIndexPath*)indexPath
+- (UITableViewCell *)tableView: (UITableView *)tableView
+	 cellForRowAtIndexPath: (NSIndexPath *)indexPath
 {
 	UITableViewCell *cell = [tableView
 	    dequeueReusableCellWithIdentifier: @"site"];
@@ -63,14 +63,14 @@
 	return cell;
 }
 
--	  (void)tableView: (UITableView*)tableView
-  didSelectRowAtIndexPath: (NSIndexPath*)indexPath
+-	  (void)tableView: (UITableView *)tableView
+  didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 {
 	[self performSegueWithIdentifier: @"showDetails"
 				  sender: self];
 }
 
-- (void)prepareForSegue: (UIStoryboardSegue*)segue
+- (void)prepareForSegue: (UIStoryboardSegue *)segue
 		 sender: (id)sender
 {
 	if ([segue.identifier isEqual: @"addSite"] ||
