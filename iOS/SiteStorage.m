@@ -57,8 +57,7 @@ static OFNumber *lengthField, *legacyField;
 		    @"sites.msgpack"] retain];
 
 		@try {
-			_storage = [[[OFDataArray
-			    dataArrayWithContentsOfFile: _path]
+			_storage = [[[OFData dataWithContentsOfFile: _path]
 			    messagePackValue] mutableCopy];
 		} @catch (id e) {
 			_storage = [[OFMutableDictionary alloc] init];
