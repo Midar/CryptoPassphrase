@@ -163,31 +163,31 @@ clearNSMutableString(NSMutableString *string)
 
 - (void)_generateWithCallback: (void (^)(NSMutableString *))block
 {
-	UIStoryboard *mainStoryboard =
-	[UIStoryboard storyboardWithName: @"Main"
-				  bundle: nil];
-	UIViewController *activityController = [mainStoryboard
+	id <PasswordGenerator> generator;
+	char *passphrase;
+	UIStoryboard *mainStoryboard;
+	UIViewController *activityController;
+
+	if (_legacy)
+		generator = [LegacyPasswordGenerator generator];
+	else
+		generator = [NewPasswordGenerator generator];
+
+	generator.site = _name;
+	generator.length = _length;
+
+	passphrase = of_strdup([self.passphraseField.text UTF8String]);
+	generator.passphrase = passphrase;
+
+	mainStoryboard = [UIStoryboard storyboardWithName: @"Main"
+						   bundle: nil];
+	activityController = [mainStoryboard
 	    instantiateViewControllerWithIdentifier: @"activityIndicator"];
 	[self.navigationController.view addSubview: activityController.view];
 
 	dispatch_async(dispatch_get_global_queue(
 	    DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
-		id <PasswordGenerator> generator;
-		char *passphrase;
-
-		if (_legacy)
-			generator = [LegacyPasswordGenerator generator];
-		else
-			generator = [NewPasswordGenerator generator];
-
-		generator.site = _name;
-		generator.length = _length;
-
-		passphrase = of_strdup([self.passphraseField.text UTF8String]);
 		@try {
-			self.passphraseField.text = @"";
-			generator.passphrase = passphrase;
-
 			[generator derivePassword];
 		} @finally {
 			of_explicit_memset(passphrase, 0, strlen(passphrase));
@@ -199,8 +199,10 @@ clearNSMutableString(NSMutableString *string)
 		of_explicit_memset(generator.output, 0,
 		    strlen((char *)generator.output));
 
-		activityController.view.hidden = YES;
-		block(password);
+		dispatch_sync(dispatch_get_main_queue(), ^ {
+			activityController.view.hidden = YES;
+			block(password);
+		});
 	});
 }
 
