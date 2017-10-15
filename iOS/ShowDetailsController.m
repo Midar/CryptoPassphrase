@@ -228,7 +228,7 @@ clearNSMutableString(NSMutableString *string)
 				     style: UIAlertActionStyleDestructive
 				   handler: ^ (UIAlertAction *action) {
 		[self.mainViewController.siteStorage removeSite: _name];
-		[self.mainViewController.tableView reloadData];
+		[self.mainViewController reset];
 
 		[self.navigationController popViewControllerAnimated: YES];
 	}]];
