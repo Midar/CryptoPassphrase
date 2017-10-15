@@ -20,8 +20,9 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+#import <UIKit/UIKit.h>
 #import <ObjFW/ObjFW.h>
-@import UIKit;
+#import <ObjFW_Bridge/ObjFW_Bridge.h>
 
 #import "AppDelegate.h"
 
@@ -29,6 +30,14 @@
 @end
 
 OF_APPLICATION_DELEGATE(OFAppDelegate)
+
+void
+_references_to_categories_of_ObjFW_Bridge(void)
+{
+	_NSString_OFObject_reference = 1;
+	_OFArray_NSObject_reference = 1;
+	_OFString_NSObject_reference = 1;
+}
 
 @implementation OFAppDelegate
 - (void)applicationDidFinishLaunching

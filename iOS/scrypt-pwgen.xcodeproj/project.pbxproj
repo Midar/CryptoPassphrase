@@ -15,7 +15,7 @@
 		4B2E52EC1DA942840040D091 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B2E52EB1DA942840040D091 /* Assets.xcassets */; };
 		4B2E52EF1DA942840040D091 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B2E52ED1DA942840040D091 /* LaunchScreen.storyboard */; };
 		4B7D94E71F93C30C00A54081 /* libobjfw.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7D94E51F93C30C00A54081 /* libobjfw.a */; };
-		4B7D94E81F93C32900A54081 /* libobjfw_brige.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7D94E41F93C30C00A54081 /* libobjfw_brige.a */; };
+		4B7D94E81F93C32900A54081 /* libobjfw_bridge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7D94E41F93C30C00A54081 /* libobjfw_bridge.a */; };
 		4B82D1151DAAAFCE00F32B2F /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B82D1141DAAAFCE00F32B2F /* AboutController.m */; };
 		4BA115D21DA9432D007ED4EA /* LegacyPasswordGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA115CE1DA9432D007ED4EA /* LegacyPasswordGenerator.m */; settings = {COMPILER_FLAGS = "-fconstant-string-class=OFConstantString -fno-constant-cfstrings"; }; };
 		4BA115D31DA9432D007ED4EA /* NewPasswordGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA115D01DA9432D007ED4EA /* NewPasswordGenerator.m */; settings = {COMPILER_FLAGS = "-fconstant-string-class=OFConstantString -fno-constant-cfstrings"; }; };
@@ -51,7 +51,7 @@
 		4B2E52EB1DA942840040D091 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B2E52EE1DA942840040D091 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B2E52F01DA942840040D091 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4B7D94E41F93C30C00A54081 /* libobjfw_brige.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libobjfw_brige.a; path = ObjFW/lib/libobjfw_brige.a; sourceTree = "<group>"; };
+		4B7D94E41F93C30C00A54081 /* libobjfw_bridge.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libobjfw_bridge.a; path = ObjFW/lib/libobjfw_bridge.a; sourceTree = "<group>"; };
 		4B7D94E51F93C30C00A54081 /* libobjfw.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libobjfw.a; path = ObjFW/lib/libobjfw.a; sourceTree = "<group>"; };
 		4B82D1131DAAAFCE00F32B2F /* AboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
 		4B82D1141DAAAFCE00F32B2F /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B7D94E71F93C30C00A54081 /* libobjfw.a in Frameworks */,
-				4B7D94E81F93C32900A54081 /* libobjfw_brige.a in Frameworks */,
+				4B7D94E81F93C32900A54081 /* libobjfw_bridge.a in Frameworks */,
 				4BF4ADEA1DA9A3DB0073B995 /* Foundation.framework in Frameworks */,
 				4BA115D61DA94390007ED4EA /* UIKit.framework in Frameworks */,
 			);
@@ -141,7 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				4B7D94E51F93C30C00A54081 /* libobjfw.a */,
-				4B7D94E41F93C30C00A54081 /* libobjfw_brige.a */,
+				4B7D94E41F93C30C00A54081 /* libobjfw_bridge.a */,
 				4BF4ADE91DA9A3DB0073B995 /* Foundation.framework */,
 				4BA115D51DA94390007ED4EA /* UIKit.framework */,
 			);
@@ -262,7 +262,6 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -296,7 +295,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -310,7 +309,6 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -338,7 +336,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -354,7 +352,6 @@
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = ObjFW/include;
 				INFOPLIST_FILE = Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ObjFW/lib",
@@ -373,7 +370,6 @@
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = ObjFW/include;
 				INFOPLIST_FILE = Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ObjFW/lib",

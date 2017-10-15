@@ -22,10 +22,6 @@
 
 #import <ObjFW/ObjFW.h>
 
-/* For literals and boxing. */
-@compatibility_alias NSDictionary OFDictionary;
-@compatibility_alias NSNumber OFNumber;
-
 #import "SiteStorage.h"
 
 @interface SiteStorage ()

@@ -20,7 +20,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-@import UIKit;
+#import <UIKit/UIKit.h>
 
 @interface AboutController: UIViewController <UIWebViewDelegate>
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
