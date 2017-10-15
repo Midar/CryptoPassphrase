@@ -58,15 +58,20 @@ clearNSMutableString(NSMutableString *string)
 	[_lengthField release];
 	[_legacySwitch release];
 	[_passphraseField release];
+	[_mainViewController release];
 
 	[super dealloc];
 }
 
 - (void)viewWillAppear: (BOOL)animated
 {
-	SiteStorage *siteStorage = self.mainViewController.siteStorage;
-	NSIndexPath *indexPath =
-	    self.mainViewController.tableView.indexPathForSelectedRow;
+	SiteStorage *siteStorage;
+	NSIndexPath *indexPath;
+
+	[super viewWillAppear: animated];
+
+	siteStorage = self.mainViewController.siteStorage;
+	indexPath = self.mainViewController.tableView.indexPathForSelectedRow;
 
 	[_name release];
 	_name = [self.mainViewController.sites[indexPath.row] retain];
@@ -83,6 +88,8 @@ clearNSMutableString(NSMutableString *string)
 
 - (void)viewDidAppear: (BOOL)animated
 {
+	[super viewDidAppear: animated];
+
 	[self.passphraseField becomeFirstResponder];
 }
 

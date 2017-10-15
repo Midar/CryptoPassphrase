@@ -46,7 +46,7 @@ static NSString *aboutHTMLTemplate =
     @" scrypt-pwgen {version}"
     @"</div>"
     @"<div id='copyright'>"
-    @" Copyright © 2016, Jonathan Schleifer"
+    @" Copyright © 2016 - 2017, Jonathan Schleifer"
     @"</div>"
     @"<p name='free_software'>"
     @" scrypt-pwgen is free software and the source code is available at "
@@ -62,6 +62,8 @@ static NSString *aboutHTMLTemplate =
 @implementation AboutController
 - (void)viewDidLoad
 {
+	[super viewDidLoad];
+
 	self.automaticallyAdjustsScrollViewInsets = NO;
 
 	NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];

@@ -30,15 +30,18 @@
 @implementation MainViewController
 - (void)viewDidLoad
 {
+	[super viewDidLoad];
+
 	_siteStorage = [[SiteStorage alloc] init];
 	[self reset];
 }
 
 - (void)dealloc
 {
-	[_siteStorage release];
-	[_tableView release];
 	[_sites release];
+	[_siteStorage release];
+	[_searchBar release];
+	[_tableView release];
 
 	[super dealloc];
 }
