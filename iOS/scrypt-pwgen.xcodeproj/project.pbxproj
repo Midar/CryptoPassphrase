@@ -18,14 +18,71 @@
 		4BA115D21DA9432D007ED4EA /* LegacyPasswordGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA115CE1DA9432D007ED4EA /* LegacyPasswordGenerator.m */; settings = {COMPILER_FLAGS = "-fconstant-string-class=OFConstantString -fno-constant-cfstrings"; }; };
 		4BA115D31DA9432D007ED4EA /* NewPasswordGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA115D01DA9432D007ED4EA /* NewPasswordGenerator.m */; settings = {COMPILER_FLAGS = "-fconstant-string-class=OFConstantString -fno-constant-cfstrings"; }; };
 		4BA115D61DA94390007ED4EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA115D51DA94390007ED4EA /* UIKit.framework */; };
-		4BB3CDF41DA967C100FEE5ED /* ObjFW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BB3CDF31DA967C100FEE5ED /* ObjFW.framework */; };
-		4BB3CDF51DA967C100FEE5ED /* ObjFW.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4BB3CDF31DA967C100FEE5ED /* ObjFW.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4BB3CDFD1DA9764300FEE5ED /* AddSiteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB3CDFC1DA9764300FEE5ED /* AddSiteController.m */; };
+		4BEE2FE61F938B3300669DB8 /* ObjFW_Bridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BEE2FE11F938B1700669DB8 /* ObjFW_Bridge.framework */; };
+		4BEE2FE71F938B3300669DB8 /* ObjFW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BEE2FDD1F938B1700669DB8 /* ObjFW.framework */; };
 		4BF4ADEA1DA9A3DB0073B995 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BF4ADE91DA9A3DB0073B995 /* Foundation.framework */; };
 		4BF4ADED1DA9A6B00073B995 /* SiteStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF4ADEC1DA9A6B00073B995 /* SiteStorage.m */; settings = {COMPILER_FLAGS = "-fconstant-string-class=OFConstantString -fno-constant-cfstrings"; }; };
-		4BF720731DA9C6E3001340C3 /* ObjFW_Bridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BF720721DA9C6E3001340C3 /* ObjFW_Bridge.framework */; };
-		4BF720741DA9C6E3001340C3 /* ObjFW_Bridge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4BF720721DA9C6E3001340C3 /* ObjFW_Bridge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4BEE2FD61F938B1700669DB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BEE2FC81F938B1700669DB8 /* ObjFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4BF33AF0133807310059CEF7;
+			remoteInfo = "Tests (Mac)";
+		};
+		4BEE2FD81F938B1700669DB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BEE2FC81F938B1700669DB8 /* ObjFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4B76F4751DA2C2BB00CFF831;
+			remoteInfo = "Tests (iOS)";
+		};
+		4BEE2FDA1F938B1700669DB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BEE2FC81F938B1700669DB8 /* ObjFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4B3D23761337FBC800DD29B8;
+			remoteInfo = "ObjFW (Mac)";
+		};
+		4BEE2FDC1F938B1700669DB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BEE2FC81F938B1700669DB8 /* ObjFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4B2C22B01DA292BE00735907;
+			remoteInfo = "ObjFW (iOS)";
+		};
+		4BEE2FDE1F938B1700669DB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BEE2FC81F938B1700669DB8 /* ObjFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4B187E0E163EA29F0049A832;
+			remoteInfo = "ObjFW_Bridge (Mac)";
+		};
+		4BEE2FE01F938B1700669DB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BEE2FC81F938B1700669DB8 /* ObjFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4B0E298B1DA2A8A400323A76;
+			remoteInfo = "ObjFW_Bridge (iOS)";
+		};
+		4BEE2FE21F938B1700669DB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BEE2FC81F938B1700669DB8 /* ObjFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4B23CA8A133811610047A1D9;
+			remoteInfo = "TestPlugin (Mac)";
+		};
+		4BEE2FE41F938B1700669DB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BEE2FC81F938B1700669DB8 /* ObjFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4B5D70751DA2F87A00B3B2D7;
+			remoteInfo = "TestPlugin (iOS)";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		4BB3CDF61DA967C100FEE5ED /* Embed Frameworks */ = {
@@ -34,8 +91,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4BF720741DA9C6E3001340C3 /* ObjFW_Bridge.framework in Embed Frameworks */,
-				4BB3CDF51DA967C100FEE5ED /* ObjFW.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,13 +118,12 @@
 		4BA115D01DA9432D007ED4EA /* NewPasswordGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewPasswordGenerator.m; path = ../NewPasswordGenerator.m; sourceTree = "<group>"; };
 		4BA115D11DA9432D007ED4EA /* PasswordGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PasswordGenerator.h; path = ../PasswordGenerator.h; sourceTree = "<group>"; };
 		4BA115D51DA94390007ED4EA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		4BB3CDF31DA967C100FEE5ED /* ObjFW.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjFW.framework; sourceTree = "<group>"; };
 		4BB3CDFB1DA9764300FEE5ED /* AddSiteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSiteController.h; sourceTree = "<group>"; };
 		4BB3CDFC1DA9764300FEE5ED /* AddSiteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSiteController.m; sourceTree = "<group>"; };
+		4BEE2FC81F938B1700669DB8 /* ObjFW.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjFW.xcodeproj; path = ../../ObjFW/ObjFW.xcodeproj; sourceTree = "<group>"; };
 		4BF4ADE91DA9A3DB0073B995 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4BF4ADEB1DA9A6B00073B995 /* SiteStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiteStorage.h; sourceTree = "<group>"; };
 		4BF4ADEC1DA9A6B00073B995 /* SiteStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiteStorage.m; sourceTree = "<group>"; };
-		4BF720721DA9C6E3001340C3 /* ObjFW_Bridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjFW_Bridge.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,10 +131,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BEE2FE71F938B3300669DB8 /* ObjFW.framework in Frameworks */,
+				4BEE2FE61F938B3300669DB8 /* ObjFW_Bridge.framework in Frameworks */,
 				4BF4ADEA1DA9A3DB0073B995 /* Foundation.framework in Frameworks */,
 				4BA115D61DA94390007ED4EA /* UIKit.framework in Frameworks */,
-				4BB3CDF41DA967C100FEE5ED /* ObjFW.framework in Frameworks */,
-				4BF720731DA9C6E3001340C3 /* ObjFW_Bridge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,12 +198,26 @@
 		4BA115D41DA94390007ED4EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4BB3CDF31DA967C100FEE5ED /* ObjFW.framework */,
-				4BF720721DA9C6E3001340C3 /* ObjFW_Bridge.framework */,
+				4BEE2FC81F938B1700669DB8 /* ObjFW.xcodeproj */,
 				4BF4ADE91DA9A3DB0073B995 /* Foundation.framework */,
 				4BA115D51DA94390007ED4EA /* UIKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4BEE2FC91F938B1700669DB8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4BEE2FD71F938B1700669DB8 /* Tests */,
+				4BEE2FD91F938B1700669DB8 /* Tests (iOS).app */,
+				4BEE2FDB1F938B1700669DB8 /* ObjFW.framework */,
+				4BEE2FDD1F938B1700669DB8 /* ObjFW.framework */,
+				4BEE2FDF1F938B1700669DB8 /* ObjFW_Bridge.framework */,
+				4BEE2FE11F938B1700669DB8 /* ObjFW_Bridge.framework */,
+				4BEE2FE31F938B1700669DB8 /* TestPlugin.bundle */,
+				4BEE2FE51F938B1700669DB8 /* TestPlugin.bundle */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,12 +268,77 @@
 			mainGroup = 4B2E52D31DA942840040D091;
 			productRefGroup = 4B2E52DD1DA942840040D091 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4BEE2FC91F938B1700669DB8 /* Products */;
+					ProjectRef = 4BEE2FC81F938B1700669DB8 /* ObjFW.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				4B2E52DB1DA942840040D091 /* scrypt-pwgen */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		4BEE2FD71F938B1700669DB8 /* Tests */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = Tests;
+			remoteRef = 4BEE2FD61F938B1700669DB8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4BEE2FD91F938B1700669DB8 /* Tests (iOS).app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Tests (iOS).app";
+			remoteRef = 4BEE2FD81F938B1700669DB8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4BEE2FDB1F938B1700669DB8 /* ObjFW.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ObjFW.framework;
+			remoteRef = 4BEE2FDA1F938B1700669DB8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4BEE2FDD1F938B1700669DB8 /* ObjFW.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ObjFW.framework;
+			remoteRef = 4BEE2FDC1F938B1700669DB8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4BEE2FDF1F938B1700669DB8 /* ObjFW_Bridge.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ObjFW_Bridge.framework;
+			remoteRef = 4BEE2FDE1F938B1700669DB8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4BEE2FE11F938B1700669DB8 /* ObjFW_Bridge.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ObjFW_Bridge.framework;
+			remoteRef = 4BEE2FE01F938B1700669DB8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4BEE2FE31F938B1700669DB8 /* TestPlugin.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = TestPlugin.bundle;
+			remoteRef = 4BEE2FE21F938B1700669DB8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4BEE2FE51F938B1700669DB8 /* TestPlugin.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = TestPlugin.bundle;
+			remoteRef = 4BEE2FE41F938B1700669DB8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4B2E52DA1DA942840040D091 /* Resources */ = {
