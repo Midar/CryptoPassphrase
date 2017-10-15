@@ -20,8 +20,8 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-@import ObjFW;
-@import ObjFW_Bridge;
+#import <ObjFW/ObjFW.h>
+#import <ObjFW_Bridge/ObjFW_Bridge.h>
 
 #import "ShowDetailsController.h"
 

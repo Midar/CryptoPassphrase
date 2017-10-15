@@ -20,7 +20,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-@import ObjFW;
+#import <ObjFW/ObjFW.h>
 @import UIKit;
 
 #import "AppDelegate.h"

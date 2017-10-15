@@ -20,7 +20,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-@import ObjFW;
+#import <ObjFW/ObjFW.h>
 
 /* For literals and boxing. */
 @compatibility_alias NSDictionary OFDictionary;
