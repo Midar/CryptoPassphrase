@@ -30,9 +30,7 @@
 	OFArray *_sites;
 }
 
-@property (readonly, nonatomic) OFArray<OFString *> *sites;
-
-- (size_t)sitesCount;
+- (OFArray<OFString *> *)sitesWithFilter: (OFString *)filter;
 - (bool)hasSite: (OFString *)name;
 - (size_t)lengthForSite: (OFString *)name;
 - (bool)isSiteLegacy: (OFString *)name;

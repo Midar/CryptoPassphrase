@@ -85,12 +85,10 @@ showAlert(UIViewController *controller, NSString *title, NSString *message)
 		return;
 	}
 
-	[self.mainViewController.siteStorage
-	    setSite: name
-	     length: length
-	     legacy: self.legacySwitch.on];
-
-	[self.mainViewController.tableView reloadData];
+	[self.mainViewController.siteStorage setSite: name
+					      length: length
+					      legacy: self.legacySwitch.on];
+	[self.mainViewController reset];
 
 	[self.navigationController popViewControllerAnimated: YES];
 }

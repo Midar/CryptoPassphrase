@@ -83,19 +83,24 @@ static OFNumber *lengthField, *legacyField;
 	[super dealloc];
 }
 
-- (OFArray<OFString *> *)sites
+- (OFArray<OFString *> *)sitesWithFilter: (OFString *)filter
 {
 	void *pool = objc_autoreleasePoolPush();
-	OFArray *sites = [[_storage allKeys] sortedArray];
+	/*
+	 * FIXME: We need case folding here, but there is no method for it yet.
+	 */
+	filter = [filter lowercaseString];
+	OFArray *sites = [[[_storage allKeys] sortedArray]
+	    filteredArrayUsingBlock: ^ (id name, size_t index) {
+		if (filter == nil)
+			return true;
+
+		return [[name lowercaseString] containsString: filter];
+	}];
 
 	[sites retain];
 	objc_autoreleasePoolPop(pool);
 	return [sites autorelease];
-}
-
-- (size_t)sitesCount
-{
-	return [_storage count];
 }
 
 - (bool)hasSite: (OFString *)name

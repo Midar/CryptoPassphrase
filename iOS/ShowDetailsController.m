@@ -69,7 +69,7 @@ clearNSMutableString(NSMutableString *string)
 	    self.mainViewController.tableView.indexPathForSelectedRow;
 
 	[_name release];
-	_name = [siteStorage.sites[indexPath.row] retain];
+	_name = [self.mainViewController.sites[indexPath.row] retain];
 	_length = [siteStorage lengthForSite: _name];
 	_legacy = [siteStorage isSiteLegacy: _name];
 

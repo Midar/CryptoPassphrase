@@ -24,8 +24,12 @@
 
 #import "SiteStorage.h"
 
-@interface MainViewController: UIViewController <UITableViewDelegate,
-    UITableViewDataSource>
+@interface MainViewController: UIViewController <UISearchBarDelegate,
+    UITableViewDelegate, UITableViewDataSource>
+@property (retain) OFArray<OFString *> *sites;
 @property (retain) SiteStorage *siteStorage;
+@property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
+
+- (void)reset;
 @end

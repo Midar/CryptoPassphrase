@@ -31,20 +31,33 @@
 - (void)viewDidLoad
 {
 	_siteStorage = [[SiteStorage alloc] init];
+	[self reset];
 }
 
 - (void)dealloc
 {
 	[_siteStorage release];
 	[_tableView release];
+	[_sites release];
 
 	[super dealloc];
+}
+
+- (void)reset
+{
+	void *pool = objc_autoreleasePoolPush();
+
+	_searchBar.text = @"";
+	self.sites = [_siteStorage sitesWithFilter: nil];
+	[_tableView reloadData];
+
+	objc_autoreleasePoolPop(pool);
 }
 
 -  (NSInteger)tableView: (UITableView *)tableView
   numberOfRowsInSection: (NSInteger)section
 {
-	return [self.siteStorage sitesCount];
+	return [self.sites count];
 }
 
 - (UITableViewCell *)tableView: (UITableView *)tableView
@@ -58,9 +71,16 @@
 		      initWithStyle: UITableViewCellStyleDefault
 		    reuseIdentifier: @"site"] autorelease];
 
-	cell.textLabel.text = [self.siteStorage.sites[indexPath.row] NSObject];
+	cell.textLabel.text = [self.sites[indexPath.row] NSObject];
 
 	return cell;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar
+    textDidChange:(NSString *)searchText
+{
+	self.sites = [_siteStorage sitesWithFilter: [_searchBar.text OFObject]];
+	[_tableView reloadData];
 }
 
 -	  (void)tableView: (UITableView *)tableView
