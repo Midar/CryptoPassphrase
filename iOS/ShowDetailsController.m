@@ -200,10 +200,11 @@ clearNSMutableString(NSMutableString *string)
 			free(passphrase);
 		}
 
-		NSMutableString *password = [NSMutableString
-		    stringWithUTF8String: (char *)generator.output];
-		of_explicit_memset(generator.output, 0,
-		    strlen((char *)generator.output));
+		NSMutableString *password = [[[NSMutableString alloc]
+		    initWithBytes: (char *)generator.output
+			   length: generator.length
+			 encoding: NSUTF8StringEncoding] autorelease];
+		of_explicit_memset(generator.output, 0, generator.length);
 
 		dispatch_sync(dispatch_get_main_queue(), ^ {
 			activityController.view.hidden = YES;
