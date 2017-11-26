@@ -74,7 +74,7 @@
 		      initWithStyle: UITableViewCellStyleDefault
 		    reuseIdentifier: @"site"] autorelease];
 
-	cell.textLabel.text = [self.sites[indexPath.row] NSObject];
+	cell.textLabel.text = self.sites[indexPath.row].NSObject;
 
 	return cell;
 }
@@ -82,7 +82,7 @@
 - (void)searchBar:(UISearchBar *)searchBar
     textDidChange:(NSString *)searchText
 {
-	self.sites = [_siteStorage sitesWithFilter: [_searchBar.text OFObject]];
+	self.sites = [_siteStorage sitesWithFilter: _searchBar.text.OFObject];
 	[_tableView reloadData];
 }
 

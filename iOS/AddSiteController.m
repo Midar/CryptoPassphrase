@@ -54,18 +54,18 @@ showAlert(UIViewController *controller, NSString *title, NSString *message)
 
 - (IBAction)done: (id)sender
 {
-	OFString *name = [self.nameField.text OFObject];
-	OFString *lengthStr = [self.lengthField.text OFObject];
+	OFString *name = self.nameField.text.OFObject;
+	OFString *lengthString = self.lengthField.text.OFObject;
 	bool lengthValid = true;
 	size_t length;
 
-	if ([name length] == 0) {
+	if (name.length == 0) {
 		showAlert(self, @"Name missing", @"Please enter a name.");
 		return;
 	}
 
 	@try {
-		length = (size_t)[lengthStr decimalValue];
+		length = (size_t)lengthString.decimalValue;
 
 		if (length < 3 || length > 64)
 			lengthValid = false;

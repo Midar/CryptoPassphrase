@@ -77,7 +77,7 @@ clearNSMutableString(NSMutableString *string)
 	_length = [siteStorage lengthForSite: _name];
 	_legacy = [siteStorage isSiteLegacy: _name];
 
-	self.nameField.text = [_name NSObject];
+	self.nameField.text = _name.NSObject;
 	self.lengthField.text = [NSString stringWithFormat: @"%zu", _length];
 	self.legacySwitch.on = _legacy;
 
@@ -182,7 +182,7 @@ clearNSMutableString(NSMutableString *string)
 	generator.site = _name;
 	generator.length = _length;
 
-	passphrase = of_strdup([self.passphraseField.text UTF8String]);
+	passphrase = of_strdup(self.passphraseField.text.UTF8String);
 	generator.passphrase = passphrase;
 
 	mainStoryboard = [UIStoryboard storyboardWithName: @"Main"

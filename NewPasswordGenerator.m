@@ -31,7 +31,7 @@
 	return [[[self alloc] init] autorelease];
 }
 
-- init
+- (instancetype)init
 {
 	self = [super init];
 
@@ -46,8 +46,8 @@
 	size_t passphraseLength, combinedPassphraseLength;
 	char *combinedPassphrase;
 
-	[siteHash updateWithBuffer: [_site UTF8String]
-			    length: [_site UTF8StringLength]];
+	[siteHash updateWithBuffer: _site.UTF8String
+			    length: _site.UTF8StringLength];
 
 	if (_output != NULL) {
 		of_explicit_memset(_output, 0, _length);
@@ -58,10 +58,10 @@
 
 	passphraseLength = combinedPassphraseLength = strlen(_passphrase);
 	if (_keyfile != nil) {
-		if (SIZE_MAX - combinedPassphraseLength < [_keyfile count])
+		if (SIZE_MAX - combinedPassphraseLength < _keyfile.count)
 			@throw [OFOutOfRangeException exception];
 
-		combinedPassphraseLength += [_keyfile count];
+		combinedPassphraseLength += _keyfile.count;
 	}
 
 	if ((combinedPassphrase = malloc(combinedPassphraseLength)) == NULL)
@@ -72,10 +72,10 @@
 
 		if (_keyfile != nil)
 			memcpy(combinedPassphrase + passphraseLength,
-			    [_keyfile items], [_keyfile count]);
+			    _keyfile.items, _keyfile.count);
 
-		of_scrypt(8, 524288, 2, [siteHash digest],
-		    [[siteHash class] digestSize], combinedPassphrase,
+		of_scrypt(8, 524288, 2, siteHash.digest,
+		    [siteHash.class digestSize], combinedPassphrase,
 		    combinedPassphraseLength, _output, _length);
 	} @finally {
 		of_explicit_memset(combinedPassphrase, 0,

@@ -105,7 +105,7 @@ showHelp(OFStream *output, bool verbose)
 		}
 	}
 
-	if ([[optionsParser remainingArguments] count] != 1) {
+	if (optionsParser.remainingArguments.count != 1) {
 		showHelp(of_stderr, false);
 
 		[OFApplication terminateWithStatus: 1];
@@ -114,13 +114,13 @@ showHelp(OFStream *output, bool verbose)
 	id <PasswordGenerator> generator = (_legacy
 	    ? [LegacyPasswordGenerator generator]
 	    : [NewPasswordGenerator generator]);
-	generator.site = [[optionsParser remainingArguments] firstObject];
+	generator.site = optionsParser.remainingArguments.firstObject;
 
 	if (lengthString != nil) {
 		bool invalid = false;
 
 		@try {
-			generator.length = (size_t)[lengthString decimalValue];
+			generator.length = (size_t)lengthString.decimalValue;
 		} @catch (OFInvalidFormatException *e) {
 			invalid = true;
 		} @catch (OFOutOfRangeException *e) {
@@ -190,7 +190,7 @@ showHelp(OFStream *output, bool verbose)
 		of_explicit_memset(passphrase, 0, strlen(passphrase));
 
 		if (keyfile != nil)
-			of_explicit_memset([keyfile items], 0, [keyfile count]);
+			of_explicit_memset(keyfile.items, 0, keyfile.count);
 	}
 
 	[OFApplication terminate];

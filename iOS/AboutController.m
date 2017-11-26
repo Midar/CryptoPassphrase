@@ -66,7 +66,7 @@ static NSString *aboutHTMLTemplate =
 
 	self.automaticallyAdjustsScrollViewInsets = NO;
 
-	NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+	NSDictionary *infoDictionary = NSBundle.mainBundle.infoDictionary;
 	NSString *version = infoDictionary[@"CFBundleShortVersionString"];
 	NSString *aboutHTML = [aboutHTMLTemplate
 	    stringByReplacingOccurrencesOfString: @"{version}"
@@ -87,9 +87,9 @@ static NSString *aboutHTMLTemplate =
 	      navigationType: (UIWebViewNavigationType)navigationType
 {
 	if (navigationType == UIWebViewNavigationTypeLinkClicked) {
-		[[UIApplication sharedApplication] openURL: request.URL
-						   options: @{}
-					 completionHandler: ^ (BOOL success) {
+		[UIApplication.sharedApplication openURL: request.URL
+						 options: @{}
+				       completionHandler: ^ (BOOL success) {
 		}];
 		return NO;
 	}
