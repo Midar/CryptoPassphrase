@@ -30,11 +30,13 @@
 	OFString *_name;
 	size_t _length;
 	bool _legacy;
+	OFString *_keyFile;
 }
 
 @property (retain, nonatomic) IBOutlet UITextField *nameField;
 @property (retain, nonatomic) IBOutlet UITextField *lengthField;
 @property (retain, nonatomic) IBOutlet UISwitch *legacySwitch;
+@property (retain, nonatomic) IBOutlet UITextField *keyFileField;
 @property (retain, nonatomic) IBOutlet UITextField *passphraseField;
 @property (retain) MainViewController *mainViewController;
 

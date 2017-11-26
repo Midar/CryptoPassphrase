@@ -25,7 +25,7 @@
 @interface SiteStorage: OFObject
 {
 	OFString *_path;
-	OFMutableDictionary<OFString *, OFDictionary<OFNumber *, OFNumber *> *>
+	OFMutableDictionary<OFString *, OFDictionary<OFNumber *, id> *>
 	    *_storage;
 	OFArray *_sites;
 }
@@ -34,8 +34,10 @@
 - (bool)hasSite: (OFString *)name;
 - (size_t)lengthForSite: (OFString *)name;
 - (bool)isSiteLegacy: (OFString *)name;
+- (OFString *)keyFileForSite: (OFString *)name;
 - (void)setSite: (OFString *)site
 	 length: (size_t)length
-	 legacy: (bool)legacy;
+	 legacy: (bool)legacy
+	keyFile: (OFString *)keyFile;
 - (void)removeSite: (OFString *)name;
 @end

@@ -23,7 +23,7 @@
 #import "NewPasswordGenerator.h"
 
 @implementation NewPasswordGenerator
-@synthesize length = _length, site = _site, keyfile = _keyfile;
+@synthesize length = _length, site = _site, keyFile = _keyFile;
 @synthesize passphrase = _passphrase, output = _output;
 
 + (instancetype)generator
@@ -57,11 +57,11 @@
 	_output = [self allocMemoryWithSize: _length + 1];
 
 	passphraseLength = combinedPassphraseLength = strlen(_passphrase);
-	if (_keyfile != nil) {
-		if (SIZE_MAX - combinedPassphraseLength < _keyfile.count)
+	if (_keyFile != nil) {
+		if (SIZE_MAX - combinedPassphraseLength < _keyFile.count)
 			@throw [OFOutOfRangeException exception];
 
-		combinedPassphraseLength += _keyfile.count;
+		combinedPassphraseLength += _keyFile.count;
 	}
 
 	if ((combinedPassphrase = malloc(combinedPassphraseLength)) == NULL)
@@ -70,9 +70,9 @@
 	@try {
 		memcpy(combinedPassphrase, _passphrase, passphraseLength);
 
-		if (_keyfile != nil)
+		if (_keyFile != nil)
 			memcpy(combinedPassphrase + passphraseLength,
-			    _keyfile.items, _keyfile.count);
+			    _keyFile.items, _keyFile.count);
 
 		of_scrypt(8, 524288, 2, siteHash.digest,
 		    [siteHash.class digestSize], combinedPassphrase,

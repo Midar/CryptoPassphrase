@@ -56,6 +56,8 @@ clearNSMutableString(NSMutableString *string)
 	[_nameField release];
 	[_lengthField release];
 	[_legacySwitch release];
+	[_keyFile release];
+	[_keyFileField release];
 	[_passphraseField release];
 	[_mainViewController release];
 
@@ -73,13 +75,15 @@ clearNSMutableString(NSMutableString *string)
 	indexPath = self.mainViewController.tableView.indexPathForSelectedRow;
 
 	[_name release];
-	_name = [self.mainViewController.sites[indexPath.row] retain];
+	_name = [self.mainViewController.sites[indexPath.row] copy];
 	_length = [siteStorage lengthForSite: _name];
 	_legacy = [siteStorage isSiteLegacy: _name];
+	_keyFile = [[siteStorage keyFileForSite: _name] copy];
 
 	self.nameField.text = _name.NSObject;
 	self.lengthField.text = [NSString stringWithFormat: @"%zu", _length];
 	self.legacySwitch.on = _legacy;
+	self.keyFileField.text = _keyFile.NSObject;
 
 	[self.mainViewController.tableView deselectRowAtIndexPath: indexPath
 							 animated: YES];

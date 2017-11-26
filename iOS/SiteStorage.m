@@ -28,40 +28,42 @@
 - (void)_update;
 @end
 
-static OFNumber *lengthField, *legacyField;
+static OFNumber *lengthField, *legacyField, *keyFileField;
 
 @implementation SiteStorage
 + (void)initialize
 {
 	lengthField = [@(UINT8_C(0)) retain];
 	legacyField = [@(UINT8_C(1)) retain];
+	keyFileField = [@(UINT8_C(2)) retain];
 }
 
-- init
+- (instancetype)init
 {
 	self = [super init];
 
 	@try {
-		void *pool = objc_autoreleasePoolPush();
-		OFFileManager *fileManager = [OFFileManager defaultManager];
-		OFString *userDataPath = [OFSystemInfo userDataPath];
+		@autoreleasepool {
+			OFFileManager *fileManager =
+			    OFFileManager.defaultManager;
+			OFString *userDataPath = OFSystemInfo.userDataPath;
 
-		if (![fileManager directoryExistsAtPath: userDataPath])
-			[fileManager createDirectoryAtPath: userDataPath];
+			if (![fileManager directoryExistsAtPath: userDataPath])
+				[fileManager
+				    createDirectoryAtPath: userDataPath];
 
-		_path = [[userDataPath stringByAppendingPathComponent:
-		    @"sites.msgpack"] retain];
+			_path = [[userDataPath stringByAppendingPathComponent:
+			    @"sites.msgpack"] copy];
 
-		@try {
-			_storage = [[[OFData dataWithContentsOfFile: _path]
-			    messagePackValue] mutableCopy];
-		} @catch (id e) {
-			_storage = [[OFMutableDictionary alloc] init];
+			@try {
+				_storage = [[OFData dataWithContentsOfFile:
+				    _path].messagePackValue mutableCopy];
+			} @catch (id e) {
+				_storage = [[OFMutableDictionary alloc] init];
+			}
+
+			_sites = [_storage.allKeys.sortedArray retain];
 		}
-
-		_sites = [[[_storage allKeys] sortedArray] retain];
-
-		objc_autoreleasePoolPop(pool);
 	} @catch (id e) {
 		[self release];
 		@throw e;
@@ -81,21 +83,25 @@ static OFNumber *lengthField, *legacyField;
 
 - (OFArray<OFString *> *)sitesWithFilter: (OFString *)filter
 {
-	void *pool = objc_autoreleasePoolPush();
-	/*
-	 * FIXME: We need case folding here, but there is no method for it yet.
-	 */
-	filter = [filter lowercaseString];
-	OFArray *sites = [[[_storage allKeys] sortedArray]
-	    filteredArrayUsingBlock: ^ (id name, size_t index) {
-		if (filter == nil)
-			return true;
+	OFArray<OFString *> *sites;
 
-		return [[name lowercaseString] containsString: filter];
-	}];
+	@autoreleasepool {
+		/*
+		 * FIXME: We need case folding here, but there is no method for
+		 *	  it yet.
+		 */
+		filter = filter.lowercaseString;
+		sites = [_storage.allKeys.sortedArray
+		    filteredArrayUsingBlock: ^ (OFString *name, size_t index) {
+			if (filter == nil)
+				return true;
 
-	[sites retain];
-	objc_autoreleasePoolPop(pool);
+			return [name.lowercaseString containsString: filter];
+		}];
+
+		[sites retain];
+	}
+
 	return [sites autorelease];
 }
 
@@ -106,7 +112,7 @@ static OFNumber *lengthField, *legacyField;
 
 - (size_t)lengthForSite: (OFString *)name
 {
-	OFDictionary *site = _storage[name];
+	OFDictionary<OFNumber *, id> *site = _storage[name];
 
 	if (site == nil)
 		@throw [OFInvalidArgumentException exception];
@@ -116,7 +122,7 @@ static OFNumber *lengthField, *legacyField;
 
 - (bool)isSiteLegacy: (OFString *)name
 {
-	OFDictionary *site = _storage[name];
+	OFDictionary<OFNumber *, id> *site = _storage[name];
 
 	if (site == nil)
 		@throw [OFInvalidArgumentException exception];
@@ -124,19 +130,41 @@ static OFNumber *lengthField, *legacyField;
 	return [site[legacyField] boolValue];
 }
 
+- (OFString *)keyFileForSite: (OFString *)name
+{
+	OFDictionary<OFNumber *, id> *site = _storage[name];
+	OFString *keyFile;
+
+	if (site == nil)
+		@throw [OFInvalidArgumentException exception];
+
+	keyFile = site[keyFileField];
+
+	if ([keyFile isEqual: [OFNull null]])
+		return nil;
+
+	return keyFile;
+}
+
 - (void)setSite: (OFString *)site
 	 length: (size_t)length
 	 legacy: (bool)legacy
+	keyFile: (OFString *)keyFile
 {
-	void *pool = objc_autoreleasePoolPush();
+	@autoreleasepool {
+		OFMutableDictionary *siteDictionary =
+		    [OFMutableDictionary dictionary];
 
-	_storage[site] = @{
-		lengthField: @(length),
-		legacyField: @(legacy)
-	};
-	[self _update];
+		siteDictionary[lengthField] = @(length);
+		siteDictionary[legacyField] = @(legacy);
+		siteDictionary[keyFileField] = keyFile;
 
-	objc_autoreleasePoolPop(pool);
+		[siteDictionary makeImmutable];
+
+		_storage[site] = siteDictionary;
+
+		[self _update];
+	}
 }
 
 - (void)removeSite: (OFString *)name
@@ -147,13 +175,11 @@ static OFNumber *lengthField, *legacyField;
 
 - (void)_update
 {
-	void *pool = objc_autoreleasePoolPush();
+	@autoreleasepool {
+		[_storage.messagePackRepresentation writeToFile: _path];
 
-	[[_storage messagePackRepresentation] writeToFile: _path];
-
-	[_sites release];
-	_sites = [[[_storage allKeys] sortedArray] retain];
-
-	objc_autoreleasePoolPop(pool);
+		[_sites release];
+		_sites = [_storage.allKeys.sortedArray retain];
+	}
 }
 @end

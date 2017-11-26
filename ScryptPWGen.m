@@ -49,10 +49,10 @@ showHelp(OFStream *output, bool verbose)
 @implementation ScryptPWGen
 - (void)applicationDidFinishLaunching
 {
-	OFString *keyfilePath, *lengthString;
+	OFString *keyFilePath, *lengthString;
 	const of_options_parser_option_t options[] = {
 		{ 'h', @"help", 0, NULL, NULL },
-		{ 'k', @"keyfile", 1, NULL, &keyfilePath },
+		{ 'k', @"keyfile", 1, NULL, &keyFilePath },
 		{ 'l', @"length", 1, NULL, &lengthString },
 		{ 'L', @"legacy", 0, &_legacy, NULL },
 		{ 'r', @"repeat", 0, &_repeat, NULL },
@@ -61,7 +61,7 @@ showHelp(OFStream *output, bool verbose)
 	OFOptionsParser *optionsParser =
 	    [OFOptionsParser parserWithOptions: options];
 	of_unichar_t option;
-	OFMutableData *keyfile = nil;
+	OFMutableData *keyFile = nil;
 	OFString *prompt;
 	const char *promptCString;
 	char *passphrase;
@@ -140,8 +140,8 @@ showHelp(OFStream *output, bool verbose)
 					     generator.site];
 	promptCString = [prompt cStringWithEncoding: [OFLocalization encoding]];
 
-	if (keyfilePath != nil)
-		keyfile = [OFMutableData dataWithContentsOfFile: keyfilePath];
+	if (keyFilePath != nil)
+		keyFile = [OFMutableData dataWithContentsOfFile: keyFilePath];
 
 	passphrase = getpass(promptCString);
 	@try {
@@ -173,7 +173,7 @@ showHelp(OFStream *output, bool verbose)
 			}
 		}
 
-		generator.keyfile = keyfile;
+		generator.keyFile = keyFile;
 		generator.passphrase = passphrase;
 
 		[generator derivePassword];
@@ -189,8 +189,8 @@ showHelp(OFStream *output, bool verbose)
 	} @finally {
 		of_explicit_memset(passphrase, 0, strlen(passphrase));
 
-		if (keyfile != nil)
-			of_explicit_memset(keyfile.items, 0, keyfile.count);
+		if (keyFile != nil)
+			of_explicit_memset(keyFile.items, 0, keyFile.count);
 	}
 
 	[OFApplication terminate];

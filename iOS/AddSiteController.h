@@ -24,10 +24,11 @@
 
 #import "MainViewController.h"
 
-@interface AddSiteController: UITableViewController
+@interface AddSiteController: UITableViewController <UITableViewDelegate>
 @property (nonatomic, retain) IBOutlet UITextField *nameField;
 @property (nonatomic, retain) IBOutlet UITextField *lengthField;
 @property (nonatomic, retain) IBOutlet UISwitch *legacySwitch;
+@property (nonatomic, retain) IBOutlet UILabel *keyFileLabel;
 @property (retain) MainViewController *mainViewController;
 
 - (IBAction)done: (id)sender;

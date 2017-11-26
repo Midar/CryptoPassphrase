@@ -25,7 +25,7 @@
 @protocol PasswordGenerator
 @property (nonatomic) size_t length;
 @property (copy, nonatomic) OFString *site;
-@property (retain, nonatomic) OFData *keyfile;
+@property (retain, nonatomic) OFData *keyFile;
 @property (nonatomic) const char *passphrase;
 @property (readonly, nonatomic) unsigned char *output;
 

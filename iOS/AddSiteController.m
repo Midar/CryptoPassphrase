@@ -47,9 +47,34 @@ showAlert(UIViewController *controller, NSString *title, NSString *message)
 	[_nameField release];
 	[_lengthField release];
 	[_legacySwitch release];
+	[_keyFileLabel release];
 	[_mainViewController release];
 
 	[super dealloc];
+}
+
+-	  (void)tableView: (UITableView *)tableView
+  didSelectRowAtIndexPath: (NSIndexPath *)indexPath
+{
+	[tableView deselectRowAtIndexPath: indexPath
+				 animated: YES];
+
+	if (indexPath.section == 1 && indexPath.row == 1)
+		[self selectKeyFile];
+}
+
+- (NSIndexPath *)tableView: (UITableView *)tableView
+  willSelectRowAtIndexPath: (NSIndexPath *)indexPath
+{
+	if (indexPath.section == 1 && indexPath.row == 1)
+		return indexPath;
+
+	return nil;
+}
+
+- (void)selectKeyFile
+{
+	showAlert(self, @"Not Supported", @"Key files are not supported yet");
 }
 
 - (IBAction)done: (id)sender
@@ -87,7 +112,8 @@ showAlert(UIViewController *controller, NSString *title, NSString *message)
 
 	[self.mainViewController.siteStorage setSite: name
 					      length: length
-					      legacy: self.legacySwitch.on];
+					      legacy: self.legacySwitch.on
+					     keyFile: nil];
 	[self.mainViewController reset];
 
 	[self.navigationController popViewControllerAnimated: YES];
