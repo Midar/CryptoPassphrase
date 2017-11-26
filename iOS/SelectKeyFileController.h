@@ -21,38 +21,14 @@
  */
 
 #import <UIKit/UIKit.h>
-#import <ObjFW/ObjFW.h>
-#import <ObjFW_Bridge/ObjFW_Bridge.h>
 
-#import "AppDelegate.h"
+#import "AddSiteController.h"
 
-@interface OFAppDelegate: OFObject <OFApplicationDelegate>
-@end
-
-OF_APPLICATION_DELEGATE(OFAppDelegate)
-
-void
-_references_to_categories_of_ObjFW_Bridge(void)
+@interface SelectKeyFileController: UITableViewController <UITableViewDelegate,
+    UITableViewDataSource>
 {
-	_NSString_OFObject_reference = 1;
-	_OFArray_NSObject_reference = 1;
-	_OFString_NSObject_reference = 1;
+	NSArray<NSString *> *_keyFiles;
 }
 
-@implementation OFAppDelegate
-- (void)applicationDidFinishLaunching
-{
-	int *argc;
-	char ***argv;
-	int status;
-
-	[[OFApplication sharedApplication]
-	    getArgumentCount: &argc
-	   andArgumentValues: &argv];
-
-	status = UIApplicationMain(*argc, *argv, nil,
-	    NSStringFromClass([AppDelegate class]));
-
-	[OFApplication terminateWithStatus: status];
-}
+@property (retain) AddSiteController *addSiteController;
 @end

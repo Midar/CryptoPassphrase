@@ -23,6 +23,7 @@
 		4BA115D31DA9432D007ED4EA /* NewPasswordGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA115D01DA9432D007ED4EA /* NewPasswordGenerator.m */; settings = {COMPILER_FLAGS = "-fconstant-string-class=OFConstantString -fno-constant-cfstrings"; }; };
 		4BA115D61DA94390007ED4EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA115D51DA94390007ED4EA /* UIKit.framework */; };
 		4BB3CDFD1DA9764300FEE5ED /* AddSiteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB3CDFC1DA9764300FEE5ED /* AddSiteController.m */; };
+		4BC29DD51FCB5FAE00A1E786 /* SelectKeyFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC29DD41FCB5FAE00A1E786 /* SelectKeyFileController.m */; };
 		4BF4ADEA1DA9A3DB0073B995 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BF4ADE91DA9A3DB0073B995 /* Foundation.framework */; };
 		4BF4ADED1DA9A6B00073B995 /* SiteStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF4ADEC1DA9A6B00073B995 /* SiteStorage.m */; settings = {COMPILER_FLAGS = "-fconstant-string-class=OFConstantString -fno-constant-cfstrings"; }; };
 /* End PBXBuildFile section */
@@ -67,6 +68,8 @@
 		4BA115D51DA94390007ED4EA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4BB3CDFB1DA9764300FEE5ED /* AddSiteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSiteController.h; sourceTree = "<group>"; };
 		4BB3CDFC1DA9764300FEE5ED /* AddSiteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSiteController.m; sourceTree = "<group>"; };
+		4BC29DD41FCB5FAE00A1E786 /* SelectKeyFileController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectKeyFileController.m; sourceTree = "<group>"; };
+		4BC29DD61FCB5FC400A1E786 /* SelectKeyFileController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectKeyFileController.h; sourceTree = "<group>"; };
 		4BF4ADE91DA9A3DB0073B995 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4BF4ADEB1DA9A6B00073B995 /* SiteStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiteStorage.h; sourceTree = "<group>"; };
 		4BF4ADEC1DA9A6B00073B995 /* SiteStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiteStorage.m; sourceTree = "<group>"; };
@@ -120,6 +123,8 @@
 				4B2E52E81DA942840040D091 /* Main.storyboard */,
 				4B2E52E51DA942840040D091 /* MainViewController.h */,
 				4B2E52E61DA942840040D091 /* MainViewController.m */,
+				4BC29DD61FCB5FC400A1E786 /* SelectKeyFileController.h */,
+				4BC29DD41FCB5FAE00A1E786 /* SelectKeyFileController.m */,
 				4B0719231DAA78D80065997A /* ShowDetailsController.h */,
 				4B0719241DAA78D80065997A /* ShowDetailsController.m */,
 				4BF4ADEB1DA9A6B00073B995 /* SiteStorage.h */,
@@ -226,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B82D1151DAAAFCE00F32B2F /* AboutController.m in Sources */,
+				4BC29DD51FCB5FAE00A1E786 /* SelectKeyFileController.m in Sources */,
 				4BB3CDFD1DA9764300FEE5ED /* AddSiteController.m in Sources */,
 				4B2E52E41DA942840040D091 /* AppDelegate.m in Sources */,
 				4BA115D21DA9432D007ED4EA /* LegacyPasswordGenerator.m in Sources */,

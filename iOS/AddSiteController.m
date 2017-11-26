@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, Jonathan Schleifer <js@heap.zone>
+ * Copyright (c) 2016, 2017, Jonathan Schleifer <js@heap.zone>
  *
  * https://heap.zone/git/scrypt-pwgen.git
  *
@@ -23,6 +23,7 @@
 #import <ObjFW_Bridge/ObjFW_Bridge.h>
 
 #import "AddSiteController.h"
+#import "SelectKeyFileController.h"
 
 static void
 showAlert(UIViewController *controller, NSString *title, NSString *message)
@@ -47,6 +48,7 @@ showAlert(UIViewController *controller, NSString *title, NSString *message)
 	[_nameField release];
 	[_lengthField release];
 	[_legacySwitch release];
+	[_keyFile release];
 	[_keyFileLabel release];
 	[_mainViewController release];
 
@@ -60,7 +62,8 @@ showAlert(UIViewController *controller, NSString *title, NSString *message)
 				 animated: YES];
 
 	if (indexPath.section == 1 && indexPath.row == 1)
-		[self selectKeyFile];
+		[self performSegueWithIdentifier: @"selectKeyFile"
+					  sender: self];
 }
 
 - (NSIndexPath *)tableView: (UITableView *)tableView
@@ -70,11 +73,6 @@ showAlert(UIViewController *controller, NSString *title, NSString *message)
 		return indexPath;
 
 	return nil;
-}
-
-- (void)selectKeyFile
-{
-	showAlert(self, @"Not Supported", @"Key files are not supported yet");
 }
 
 - (IBAction)done: (id)sender
@@ -113,7 +111,7 @@ showAlert(UIViewController *controller, NSString *title, NSString *message)
 	[self.mainViewController.siteStorage setSite: name
 					      length: length
 					      legacy: self.legacySwitch.on
-					     keyFile: nil];
+					     keyFile: self.keyFile.OFObject];
 	[self.mainViewController reset];
 
 	[self.navigationController popViewControllerAnimated: YES];
@@ -122,5 +120,12 @@ showAlert(UIViewController *controller, NSString *title, NSString *message)
 - (IBAction)cancel: (id)sender
 {
 	[self.navigationController popViewControllerAnimated: YES];
+}
+
+- (void)prepareForSegue: (UIStoryboardSegue *)segue
+		 sender: (id)sender
+{
+	if ([segue.identifier isEqual: @"selectKeyFile"])
+		[segue.destinationViewController setAddSiteController: self];
 }
 @end

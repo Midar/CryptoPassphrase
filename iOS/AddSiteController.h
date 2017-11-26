@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, Jonathan Schleifer <js@heap.zone>
+ * Copyright (c) 2016, 2017, Jonathan Schleifer <js@heap.zone>
  *
  * https://heap.zone/git/scrypt-pwgen.git
  *
@@ -28,6 +28,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *nameField;
 @property (nonatomic, retain) IBOutlet UITextField *lengthField;
 @property (nonatomic, retain) IBOutlet UISwitch *legacySwitch;
+@property (nonatomic, copy) NSString *keyFile;
 @property (nonatomic, retain) IBOutlet UILabel *keyFileLabel;
 @property (retain) MainViewController *mainViewController;
 

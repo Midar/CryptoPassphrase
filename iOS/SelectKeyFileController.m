@@ -20,84 +20,76 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <ObjFW_Bridge/ObjFW_Bridge.h>
+#import "SelectKeyFileController.h"
 
-#import "MainViewController.h"
-
-#import "AddSiteController.h"
-#import "ShowDetailsController.h"
-
-@implementation MainViewController
+@implementation SelectKeyFileController
 - (void)viewDidLoad
 {
+	NSString *documentDirectory;
+	NSArray<NSString *> *keyFiles;
+	NSError *error;
+
 	[super viewDidLoad];
 
-	_siteStorage = [[SiteStorage alloc] init];
-	[self reset];
+	if ((documentDirectory = NSSearchPathForDirectoriesInDomains(
+	    NSDocumentDirectory, NSUserDomainMask, YES).firstObject) == nil) {
+		NSLog(@"Could not get key files: No documents directory");
+		[self.navigationController popViewControllerAnimated: YES];
+		return;
+	}
+
+	keyFiles = [NSFileManager.defaultManager
+	    contentsOfDirectoryAtPath: documentDirectory
+				error: &error];
+
+	if (keyFiles == nil) {
+		NSLog(@"Could not get key files: %@", error);
+		[self.navigationController popViewControllerAnimated: YES];
+		return;
+	}
+
+	_keyFiles = [[keyFiles sortedArrayUsingSelector:
+	    @selector(compare:)] retain];
 }
 
 - (void)dealloc
 {
-	[_sites release];
-	[_siteStorage release];
-	[_searchBar release];
-	[_tableView release];
+	[_keyFiles release];
 
 	[super dealloc];
-}
-
-- (void)reset
-{
-	void *pool = objc_autoreleasePoolPush();
-
-	_searchBar.text = @"";
-	self.sites = [_siteStorage sitesWithFilter: nil];
-	[_tableView reloadData];
-
-	objc_autoreleasePoolPop(pool);
 }
 
 -  (NSInteger)tableView: (UITableView *)tableView
   numberOfRowsInSection: (NSInteger)section
 {
-	return self.sites.count;
+	return _keyFiles.count + 1;
 }
 
 - (UITableViewCell *)tableView: (UITableView *)tableView
 	 cellForRowAtIndexPath: (NSIndexPath *)indexPath
 {
 	UITableViewCell *cell = [tableView
-	    dequeueReusableCellWithIdentifier: @"site"];
+	    dequeueReusableCellWithIdentifier: @"keyFile"];
 
 	if (cell == nil)
 		cell = [[[UITableViewCell alloc]
 		      initWithStyle: UITableViewCellStyleDefault
-		    reuseIdentifier: @"site"] autorelease];
+		    reuseIdentifier: @"keyFile"] autorelease];
 
-	cell.textLabel.text = self.sites[indexPath.row].NSObject;
+	cell.textLabel.text =
+	    (indexPath.row > 0 ? _keyFiles[indexPath.row - 1] : @"None");
 
 	return cell;
-}
-
-- (void)searchBar:(UISearchBar *)searchBar
-    textDidChange:(NSString *)searchText
-{
-	self.sites = [_siteStorage sitesWithFilter: _searchBar.text.OFObject];
-	[_tableView reloadData];
 }
 
 -	  (void)tableView: (UITableView *)tableView
   didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 {
-	[self performSegueWithIdentifier: @"showDetails"
-				  sender: self];
-}
+	self.addSiteController.keyFile =
+	    (indexPath.row > 0 ? _keyFiles[indexPath.row - 1] : nil);
+	self.addSiteController.keyFileLabel.text =
+	    (indexPath.row > 0 ? _keyFiles[indexPath.row - 1] : @"None");
 
-- (void)prepareForSegue: (UIStoryboardSegue *)segue
-		 sender: (id)sender
-{
-	if ([segue.identifier isEqual: @"addSite"] ||
-	    [segue.identifier isEqual: @"showDetails"])
-		[segue.destinationViewController setMainViewController: self];
+	[self.navigationController popViewControllerAnimated: YES];
 }
 @end

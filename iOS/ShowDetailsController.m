@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, Jonathan Schleifer <js@heap.zone>
+ * Copyright (c) 2016, 2017, Jonathan Schleifer <js@heap.zone>
  *
  * https://heap.zone/git/scrypt-pwgen.git
  *
@@ -186,6 +186,24 @@ clearNSMutableString(NSMutableString *string)
 	generator.site = _name;
 	generator.length = _length;
 
+	if (_keyFile != nil) {
+		NSString *documentDirectory;
+		OFString *keyFilePath;
+
+		if ((documentDirectory = NSSearchPathForDirectoriesInDomains(
+		    NSDocumentDirectory, NSUserDomainMask, YES).firstObject) ==
+		    nil) {
+			NSLog(@"Could not get key files: No documents "
+			    @"directory");
+			return;
+		}
+
+		keyFilePath = [documentDirectory.OFObject
+		    stringByAppendingPathComponent: _keyFile];
+		generator.keyFile = [OFMutableData
+		    dataWithContentsOfFile: keyFilePath];
+	}
+
 	passphrase = of_strdup(self.passphraseField.text.UTF8String);
 	generator.passphrase = passphrase;
 
@@ -200,6 +218,11 @@ clearNSMutableString(NSMutableString *string)
 		@try {
 			[generator derivePassword];
 		} @finally {
+			if (generator.keyFile != nil)
+				of_explicit_memset(
+				    (void *)generator.keyFile.items, 0,
+				    generator.keyFile.count);
+
 			of_explicit_memset(passphrase, 0, strlen(passphrase));
 			free(passphrase);
 		}
