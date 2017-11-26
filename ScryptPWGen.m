@@ -39,6 +39,7 @@ showHelp(OFStream *output, bool verbose)
 		    @"\n"
 		    @"Options:\n"
 		    @"    -h  --help    Show this help\n"
+		    @"    -k  --keyfile Use the specified key file\n"
 		    @"    -l  --length  Length for the derived password\n"
 		    @"    -L  --legacy  Use the legacy algorithm "
 		    @"(compatible with scrypt-genpass)\n"
@@ -48,10 +49,11 @@ showHelp(OFStream *output, bool verbose)
 @implementation ScryptPWGen
 - (void)applicationDidFinishLaunching
 {
-	OFString *lengthStr;
+	OFString *keyfilePath, *lengthString;
 	const of_options_parser_option_t options[] = {
 		{ 'h', @"help", 0, NULL, NULL },
-		{ 'l', @"length", 1, NULL, &lengthStr },
+		{ 'k', @"keyfile", 1, NULL, &keyfilePath },
+		{ 'l', @"length", 1, NULL, &lengthString },
 		{ 'L', @"legacy", 0, &_legacy, NULL },
 		{ 'r', @"repeat", 0, &_repeat, NULL },
 		{ '\0', nil, 0, NULL, NULL }
@@ -59,8 +61,10 @@ showHelp(OFStream *output, bool verbose)
 	OFOptionsParser *optionsParser =
 	    [OFOptionsParser parserWithOptions: options];
 	of_unichar_t option;
-	char *passphrase;
+	OFMutableData *keyfile = nil;
 	OFString *prompt;
+	const char *promptCString;
+	char *passphrase;
 
 	while ((option = [optionsParser nextOption]) != '\0') {
 		switch (option) {
@@ -112,11 +116,11 @@ showHelp(OFStream *output, bool verbose)
 	    : [NewPasswordGenerator generator]);
 	generator.site = [[optionsParser remainingArguments] firstObject];
 
-	if (lengthStr != nil) {
+	if (lengthString != nil) {
 		bool invalid = false;
 
 		@try {
-			generator.length = (size_t)[lengthStr decimalValue];
+			generator.length = (size_t)[lengthString decimalValue];
 		} @catch (OFInvalidFormatException *e) {
 			invalid = true;
 		} @catch (OFOutOfRangeException *e) {
@@ -126,17 +130,20 @@ showHelp(OFStream *output, bool verbose)
 		if (invalid) {
 			[of_stderr writeFormat:
 			    @"%@: Invalid length: %@\n",
-			    [OFApplication programName], lengthStr];
+			    [OFApplication programName], lengthString];
 
 			[OFApplication terminateWithStatus: 1];
 		}
 	}
 
-
 	prompt = [OFString stringWithFormat: @"Passphrase for site \"%@\": ",
 					     generator.site];
-	passphrase = getpass(
-	    [prompt cStringWithEncoding: [OFLocalization encoding]]);
+	promptCString = [prompt cStringWithEncoding: [OFLocalization encoding]];
+
+	if (keyfilePath != nil)
+		keyfile = [OFMutableData dataWithContentsOfFile: keyfilePath];
+
+	passphrase = getpass(promptCString);
 	@try {
 		if (_repeat) {
 			char *passphraseCopy = of_strdup(passphrase);
@@ -166,6 +173,7 @@ showHelp(OFStream *output, bool verbose)
 			}
 		}
 
+		generator.keyfile = keyfile;
 		generator.passphrase = passphrase;
 
 		[generator derivePassword];
@@ -180,6 +188,9 @@ showHelp(OFStream *output, bool verbose)
 		}
 	} @finally {
 		of_explicit_memset(passphrase, 0, strlen(passphrase));
+
+		if (keyfile != nil)
+			of_explicit_memset([keyfile items], 0, [keyfile count]);
 	}
 
 	[OFApplication terminate];

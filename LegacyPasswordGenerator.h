@@ -26,6 +26,7 @@
 {
 	size_t _length;
 	OFString *_site;
+	OFData *_keyfile;
 	const char *_passphrase;
 	unsigned char *_output;
 }

@@ -23,10 +23,11 @@
 #import <ObjFW/ObjFW.h>
 
 @protocol PasswordGenerator
-@property size_t length;
-@property (nonatomic, copy) OFString *site;
-@property const char *passphrase;
-@property (readonly) unsigned char *output;
+@property (nonatomic) size_t length;
+@property (copy, nonatomic) OFString *site;
+@property (retain, nonatomic) OFData *keyfile;
+@property (nonatomic) const char *passphrase;
+@property (readonly, nonatomic) unsigned char *output;
 
 + (instancetype)generator;
 - (void)derivePassword;

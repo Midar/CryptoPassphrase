@@ -23,7 +23,8 @@
 #import "LegacyPasswordGenerator.h"
 
 @implementation LegacyPasswordGenerator
-@synthesize site = _site, passphrase = _passphrase, output = _output;
+@synthesize site = _site, keyfile = _keyfile, passphrase = _passphrase;
+@synthesize output = _output;
 
 + (instancetype)generator
 {
@@ -55,6 +56,9 @@
 - (void)derivePassword
 {
 	OFSHA256Hash *siteHash = [OFSHA256Hash cryptoHash];
+	size_t passphraseLength, combinedPassphraseLength;
+	char *combinedPassphrase;
+
 	[siteHash updateWithBuffer: [_site UTF8String]
 			    length: [_site UTF8StringLength]];
 
@@ -65,9 +69,32 @@
 
 	_output = [self allocMemoryWithSize: _length + 1];
 
-	of_scrypt(8, 524288, 2, [siteHash digest],
-	    [[siteHash class] digestSize], _passphrase, strlen(_passphrase),
-	    _output, _length);
+	passphraseLength = combinedPassphraseLength = strlen(_passphrase);
+	if (_keyfile != nil) {
+		if (SIZE_MAX - combinedPassphraseLength < [_keyfile count])
+			@throw [OFOutOfRangeException exception];
+
+		combinedPassphraseLength += [_keyfile count];
+	}
+
+	if ((combinedPassphrase = malloc(combinedPassphraseLength)) == NULL)
+		@throw [OFOutOfMemoryException
+		    exceptionWithRequestedSize: combinedPassphraseLength];
+	@try {
+		memcpy(combinedPassphrase, _passphrase, passphraseLength);
+
+		if (_keyfile != nil)
+			memcpy(combinedPassphrase + passphraseLength,
+			    [_keyfile items], [_keyfile count]);
+
+		of_scrypt(8, 524288, 2, [siteHash digest],
+		    [[siteHash class] digestSize], combinedPassphrase,
+		    combinedPassphraseLength, _output, _length);
+	} @finally {
+		of_explicit_memset(combinedPassphrase, 0,
+		    combinedPassphraseLength);
+		free(combinedPassphrase);
+	}
 
 	/*
 	 * This has a bias, however, this is what scrypt-genpass does and the
