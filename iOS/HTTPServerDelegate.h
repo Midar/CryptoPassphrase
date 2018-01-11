@@ -20,22 +20,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <UIKit/UIKit.h>
 #import <ObjFW/ObjFW.h>
 
-#import "AddSiteController.h"
-#import "HTTPServerDelegate.h"
-
-@interface SelectKeyFileController: UITableViewController <UITableViewDelegate,
-    UITableViewDataSource>
-{
-	NSArray<NSString *> *_keyFiles;
-	OFHTTPServer *_HTTPServer;
-	HTTPServerDelegate *_HTTPServerDelegate;
-	OFThread *_HTTPServerThread;
-}
-
-@property (retain) AddSiteController *addSiteController;
-
-- (IBAction)upload:(id)sender;
+@interface HTTPServerDelegate: OFObject <OFHTTPServerDelegate>
 @end

@@ -19,6 +19,7 @@
 		4B9525261F96BB900095F259 /* ObjFW_Bridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B9525241F96BB820095F259 /* ObjFW_Bridge.framework */; };
 		4B9525291F994CD30095F259 /* ObjFW.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B9525231F96BB820095F259 /* ObjFW.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4B95252A1F9953350095F259 /* ObjFW_Bridge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B9525241F96BB820095F259 /* ObjFW_Bridge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4B9EB1152008167200EB66F2 /* HTTPServerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9EB1142008167200EB66F2 /* HTTPServerDelegate.m */; settings = {COMPILER_FLAGS = "-fconstant-string-class=OFConstantString -fno-constant-cfstrings"; }; };
 		4BA115D21DA9432D007ED4EA /* LegacyPasswordGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA115CE1DA9432D007ED4EA /* LegacyPasswordGenerator.m */; settings = {COMPILER_FLAGS = "-fconstant-string-class=OFConstantString -fno-constant-cfstrings"; }; };
 		4BA115D31DA9432D007ED4EA /* NewPasswordGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA115D01DA9432D007ED4EA /* NewPasswordGenerator.m */; settings = {COMPILER_FLAGS = "-fconstant-string-class=OFConstantString -fno-constant-cfstrings"; }; };
 		4BA115D61DA94390007ED4EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA115D51DA94390007ED4EA /* UIKit.framework */; };
@@ -60,6 +61,8 @@
 		4B82D1141DAAAFCE00F32B2F /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
 		4B9525231F96BB820095F259 /* ObjFW.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjFW.framework; path = ObjFW/Frameworks/ObjFW.framework; sourceTree = "<group>"; };
 		4B9525241F96BB820095F259 /* ObjFW_Bridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjFW_Bridge.framework; path = ObjFW/Frameworks/ObjFW_Bridge.framework; sourceTree = "<group>"; };
+		4B9EB1142008167200EB66F2 /* HTTPServerDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTTPServerDelegate.m; sourceTree = "<group>"; };
+		4B9EB1162008168400EB66F2 /* HTTPServerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPServerDelegate.h; sourceTree = "<group>"; };
 		4BA115CD1DA9432D007ED4EA /* LegacyPasswordGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LegacyPasswordGenerator.h; path = ../LegacyPasswordGenerator.h; sourceTree = "<group>"; };
 		4BA115CE1DA9432D007ED4EA /* LegacyPasswordGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LegacyPasswordGenerator.m; path = ../LegacyPasswordGenerator.m; sourceTree = "<group>"; };
 		4BA115CF1DA9432D007ED4EA /* NewPasswordGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewPasswordGenerator.h; path = ../NewPasswordGenerator.h; sourceTree = "<group>"; };
@@ -118,6 +121,8 @@
 				4BB3CDFC1DA9764300FEE5ED /* AddSiteController.m */,
 				4B2E52E21DA942840040D091 /* AppDelegate.h */,
 				4B2E52E31DA942840040D091 /* AppDelegate.m */,
+				4B9EB1162008168400EB66F2 /* HTTPServerDelegate.h */,
+				4B9EB1142008167200EB66F2 /* HTTPServerDelegate.m */,
 				4B2E52F01DA942840040D091 /* Info.plist */,
 				4B2E52ED1DA942840040D091 /* LaunchScreen.storyboard */,
 				4B2E52E81DA942840040D091 /* Main.storyboard */,
@@ -234,6 +239,7 @@
 				4BC29DD51FCB5FAE00A1E786 /* SelectKeyFileController.m in Sources */,
 				4BB3CDFD1DA9764300FEE5ED /* AddSiteController.m in Sources */,
 				4B2E52E41DA942840040D091 /* AppDelegate.m in Sources */,
+				4B9EB1152008167200EB66F2 /* HTTPServerDelegate.m in Sources */,
 				4BA115D21DA9432D007ED4EA /* LegacyPasswordGenerator.m in Sources */,
 				4B2E52E71DA942840040D091 /* MainViewController.m in Sources */,
 				4BA115D31DA9432D007ED4EA /* NewPasswordGenerator.m in Sources */,

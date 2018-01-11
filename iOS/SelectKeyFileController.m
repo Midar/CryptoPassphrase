@@ -20,6 +20,9 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+#import <ObjFW_Bridge/ObjFW_Bridge.h>
+
+#import "HTTPServerDelegate.h"
 #import "SelectKeyFileController.h"
 
 @implementation SelectKeyFileController
@@ -50,11 +53,30 @@
 
 	_keyFiles = [[keyFiles sortedArrayUsingSelector:
 	    @selector(compare:)] retain];
+
+	_HTTPServer = [[OFHTTPServer alloc] init];
+	@autoreleasepool {
+		_HTTPServer.host = @"127.0.0.1".OFObject;
+	}
+
+	_HTTPServerDelegate = [[HTTPServerDelegate alloc] init];
+	_HTTPServer.delegate = _HTTPServerDelegate;
+
+	_HTTPServerThread = [[OFThread alloc] init];
+	[_HTTPServerThread start];
 }
 
 - (void)dealloc
 {
 	[_keyFiles release];
+
+	[_HTTPServerThread.runLoop stop];
+	[_HTTPServerThread join];
+	[_HTTPServerThread release];
+
+	[_HTTPServer release];
+
+	[_HTTPServerDelegate release];
 
 	[super dealloc];
 }
@@ -91,5 +113,40 @@
 	    (indexPath.row > 0 ? _keyFiles[indexPath.row - 1] : @"None");
 
 	[self.navigationController popViewControllerAnimated: YES];
+}
+
+- (void)upload: (id)sender
+{
+	[_HTTPServerThread.runLoop addTimer: [OFTimer
+	    scheduledTimerWithTimeInterval: 0
+				   repeats: false
+				     block: ^ (OFTimer *timer) {
+		NSString *message;
+		UIAlertController *alert;
+
+		_HTTPServer.port = 0;
+		[_HTTPServer start];
+
+		message = [NSString stringWithFormat:
+		    @"Navigate to http://%@:%u/ with your browser.\n\n"
+		    @"Press OK when done.",
+		    _HTTPServer.host.NSObject, _HTTPServer.port];
+		alert = [UIAlertController
+		    alertControllerWithTitle: @"Server Running"
+				     message: message
+			      preferredStyle: UIAlertControllerStyleAlert];
+		[alert addAction:
+		    [UIAlertAction actionWithTitle: @"OK"
+					     style: UIAlertActionStyleDefault
+					   handler: nil]];
+
+		dispatch_sync(dispatch_get_main_queue(), ^ {
+			[self presentViewController: alert
+					   animated: YES
+					 completion: ^ {
+				[_HTTPServer stop];
+			}];
+		});
+	}]];
 }
 @end
