@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, 2017, Jonathan Schleifer <js@heap.zone>
+ * Copyright (c) 2016, 2017, 2018, Jonathan Schleifer <js@heap.zone>
  *
  * https://heap.zone/git/scrypt-pwgen.git
  *
@@ -79,8 +79,8 @@
 	return cell;
 }
 
-- (void)searchBar:(UISearchBar *)searchBar
-    textDidChange:(NSString *)searchText
+- (void)searchBar: (UISearchBar *)searchBar
+    textDidChange: (NSString *)searchText
 {
 	self.sites = [_siteStorage sitesWithFilter: _searchBar.text.OFObject];
 	[_tableView reloadData];

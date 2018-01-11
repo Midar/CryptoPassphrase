@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, 2017, Jonathan Schleifer <js@heap.zone>
+ * Copyright (c) 2016, 2017, 2018, Jonathan Schleifer <js@heap.zone>
  *
  * https://heap.zone/git/scrypt-pwgen.git
  *
@@ -46,7 +46,7 @@ static NSString *aboutHTMLTemplate =
     @" scrypt-pwgen {version}"
     @"</div>"
     @"<div id='copyright'>"
-    @" Copyright © 2016 - 2017, Jonathan Schleifer"
+    @" Copyright © 2016, 2017, 2018, Jonathan Schleifer"
     @"</div>"
     @"<p name='free_software'>"
     @" scrypt-pwgen is free software and the source code is available at "

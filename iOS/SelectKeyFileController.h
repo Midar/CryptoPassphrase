@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, 2017, Jonathan Schleifer <js@heap.zone>
+ * Copyright (c) 2016, 2017, 2018, Jonathan Schleifer <js@heap.zone>
  *
  * https://heap.zone/git/scrypt-pwgen.git
  *
@@ -37,5 +37,5 @@
 
 @property (retain) AddSiteController *addSiteController;
 
-- (IBAction)upload:(id)sender;
+- (IBAction)upload: (id)sender;
 @end
