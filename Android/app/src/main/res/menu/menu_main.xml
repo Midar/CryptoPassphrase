@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.javacodegeeks.android.menu.MainActivity" >
+    <item
+        android:id ="@+id/generateAndCopy"
+        android:title ="Generate password and copy to clipboard"/>
+    <item
+        android:id ="@+id/generateAndShow"
+        android:title ="Generate password and show"/>
+    <item
+        android:id ="@+id/delete"
+        android:title ="Remove"/>
+
+</menu>
