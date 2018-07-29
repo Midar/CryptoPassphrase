@@ -138,7 +138,7 @@ showHelp(OFStream *output, bool verbose)
 
 	prompt = [OFString stringWithFormat: @"Passphrase for site \"%@\": ",
 					     generator.site];
-	promptCString = [prompt cStringWithEncoding: [OFLocalization encoding]];
+	promptCString = [prompt cStringWithEncoding: [OFLocale encoding]];
 
 	if (keyFilePath != nil)
 		keyFile = [OFMutableData dataWithContentsOfFile: keyFilePath];
@@ -153,7 +153,7 @@ showHelp(OFStream *output, bool verbose)
 
 			@try {
 				of_string_encoding_t encoding =
-				    [OFLocalization encoding];
+				    [OFLocale encoding];
 
 				prompt = [OFString stringWithFormat:
 				    @"Repeat passphrase for site \"%@\": ",
