@@ -44,7 +44,7 @@ clearNSMutableString(NSMutableString *string)
 	 * replaces that character in memory, and thus allows us to zero the
 	 * password.
 	 */
-	for (NSUInteger i = 0 ; i < string.length; i++)
+	for (NSUInteger i = 0; i < string.length; i++)
 		[string replaceCharactersInRange: NSMakeRange(i, 1)
 				      withString: @" "];
 }
@@ -87,13 +87,6 @@ clearNSMutableString(NSMutableString *string)
 
 	[self.mainViewController.tableView deselectRowAtIndexPath: indexPath
 							 animated: YES];
-}
-
-- (void)viewDidAppear: (BOOL)animated
-{
-	[super viewDidAppear: animated];
-
-	[self.passphraseField becomeFirstResponder];
 }
 
 - (BOOL)textFieldShouldReturn: (UITextField *)textField
