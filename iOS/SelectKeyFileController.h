@@ -20,8 +20,8 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <UIKit/UIKit.h>
-#import <ObjFW/ObjFW.h>
+@import ObjFW;
+@import UIKit;
 
 #import "AddSiteController.h"
 #import "HTTPServerDelegate.h"

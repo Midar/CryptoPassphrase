@@ -20,7 +20,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 #import "MainViewController.h"
 

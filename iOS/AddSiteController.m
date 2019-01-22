@@ -20,7 +20,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <ObjFW_Bridge/ObjFW_Bridge.h>
+@import ObjFW_Bridge;
 
 #import "AddSiteController.h"
 #import "SelectKeyFileController.h"

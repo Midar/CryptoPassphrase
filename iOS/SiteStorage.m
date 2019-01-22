@@ -20,7 +20,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <ObjFW/ObjFW.h>
+@import ObjFW;
 
 #import "SiteStorage.h"
 
@@ -33,9 +33,9 @@ static OFNumber *lengthField, *legacyField, *keyFileField;
 @implementation SiteStorage
 + (void)initialize
 {
-	lengthField = [@(UINT8_C(0)) retain];
-	legacyField = [@(UINT8_C(1)) retain];
-	keyFileField = [@(UINT8_C(2)) retain];
+	lengthField = [[OFNumber alloc] initWithUInt8: 0];
+	legacyField = [[OFNumber alloc] initWithUInt8: 1];
+	keyFileField = [[OFNumber alloc] initWithUInt8: 2];
 }
 
 - (instancetype)init
@@ -155,8 +155,8 @@ static OFNumber *lengthField, *legacyField, *keyFileField;
 		OFMutableDictionary *siteDictionary =
 		    [OFMutableDictionary dictionary];
 
-		siteDictionary[lengthField] = @(length);
-		siteDictionary[legacyField] = @(legacy);
+		siteDictionary[lengthField] = [OFNumber numberWithSize: length];
+		siteDictionary[legacyField] = [OFNumber numberWithBool: legacy];
 		siteDictionary[keyFileField] = keyFile;
 
 		[siteDictionary makeImmutable];
