@@ -20,24 +20,8 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-@import ObjFW;
+import UIKit
 
-@interface SiteStorage: OFObject
-{
-	OFString *_path;
-	OFMutableDictionary<OFString *, OFDictionary<OFNumber *, id> *>
-	    *_storage;
-	OFArray *_sites;
+@objc class AppDelegate: UIResponder, UIApplicationDelegate {
+    public var window: UIWindow?
 }
-
-- (OFArray<OFString *> *)sitesWithFilter: (OFString *)filter;
-- (bool)hasSite: (OFString *)name;
-- (size_t)lengthForSite: (OFString *)name;
-- (bool)isSiteLegacy: (OFString *)name;
-- (OFString *)keyFileForSite: (OFString *)name;
-- (void)setSite: (OFString *)site
-	 length: (size_t)length
-	 legacy: (bool)legacy
-	keyFile: (OFString *)keyFile;
-- (void)removeSite: (OFString *)name;
-@end

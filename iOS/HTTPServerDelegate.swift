@@ -20,13 +20,12 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "AppDelegate.h"
+import Foundation
+import ObjFW
 
-@implementation AppDelegate
-- (void)dealloc
-{
-	[_window release];
-
-	[super dealloc];
+class HTTPServerDelegate: OFObject, OFHTTPServerDelegate {
+    func server(_ server: OFHTTPServer, didReceive request: OFHTTPRequest,
+                requestBody: OFStream?, response: OFHTTPResponse) {
+        print("\(request)")
+    }
 }
-@end

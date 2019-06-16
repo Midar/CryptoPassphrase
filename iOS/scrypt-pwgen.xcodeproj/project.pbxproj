@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B0719251DAA78D80065997A /* ShowDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0719241DAA78D80065997A /* ShowDetailsController.m */; };
-		4B2E52E11DA942840040D091 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2E52E01DA942840040D091 /* main.m */; };
-		4B2E52E41DA942840040D091 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2E52E31DA942840040D091 /* AppDelegate.m */; };
-		4B2E52E71DA942840040D091 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2E52E61DA942840040D091 /* MainViewController.m */; };
 		4B2E52EA1DA942840040D091 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B2E52E81DA942840040D091 /* Main.storyboard */; };
 		4B2E52EC1DA942840040D091 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B2E52EB1DA942840040D091 /* Assets.xcassets */; };
 		4B2E52EF1DA942840040D091 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B2E52ED1DA942840040D091 /* LaunchScreen.storyboard */; };
-		4B82D1151DAAAFCE00F32B2F /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B82D1141DAAAFCE00F32B2F /* AboutController.m */; };
+		4B31D80922B58F0F00494B15 /* SiteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B31D80822B58F0F00494B15 /* SiteStorage.swift */; };
+		4B5BCEF922B5B94C00E551BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5BCEF822B5B94C00E551BD /* AppDelegate.swift */; };
+		4B5BCEFB22B5CF3200E551BD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5BCEFA22B5CF3200E551BD /* MainViewController.swift */; };
+		4B5BCEFD22B5D98800E551BD /* SelectKeyFileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5BCEFC22B5D98800E551BD /* SelectKeyFileController.swift */; };
+		4B5BCEFF22B5E36900E551BD /* ShowDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5BCEFE22B5E36900E551BD /* ShowDetailsController.swift */; };
+		4B93656E22B5ADA00099DD08 /* HTTPServerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93656D22B5ADA00099DD08 /* HTTPServerDelegate.swift */; };
+		4B93657022B5AE2C0099DD08 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93656F22B5AE2C0099DD08 /* AboutController.swift */; };
+		4B93657222B5B1FB0099DD08 /* AddSiteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93657122B5B1FB0099DD08 /* AddSiteController.swift */; };
 		4B9525251F96BB900095F259 /* ObjFW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B9525231F96BB820095F259 /* ObjFW.framework */; };
 		4B9525261F96BB900095F259 /* ObjFW_Bridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B9525241F96BB820095F259 /* ObjFW_Bridge.framework */; };
 		4B9525291F994CD30095F259 /* ObjFW.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B9525231F96BB820095F259 /* ObjFW.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4B95252A1F9953350095F259 /* ObjFW_Bridge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B9525241F96BB820095F259 /* ObjFW_Bridge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4B9EB1152008167200EB66F2 /* HTTPServerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9EB1142008167200EB66F2 /* HTTPServerDelegate.m */; settings = {COMPILER_FLAGS = "-fconstant-string-class=OFConstantString -fno-constant-cfstrings"; }; };
 		4BA115D21DA9432D007ED4EA /* LegacyPasswordGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA115CE1DA9432D007ED4EA /* LegacyPasswordGenerator.m */; settings = {COMPILER_FLAGS = "-fconstant-string-class=OFConstantString -fno-constant-cfstrings"; }; };
 		4BA115D31DA9432D007ED4EA /* NewPasswordGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA115D01DA9432D007ED4EA /* NewPasswordGenerator.m */; settings = {COMPILER_FLAGS = "-fconstant-string-class=OFConstantString -fno-constant-cfstrings"; }; };
 		4BA115D61DA94390007ED4EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA115D51DA94390007ED4EA /* UIKit.framework */; };
-		4BB3CDFD1DA9764300FEE5ED /* AddSiteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB3CDFC1DA9764300FEE5ED /* AddSiteController.m */; };
-		4BC29DD51FCB5FAE00A1E786 /* SelectKeyFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC29DD41FCB5FAE00A1E786 /* SelectKeyFileController.m */; };
 		4BF4ADEA1DA9A3DB0073B995 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BF4ADE91DA9A3DB0073B995 /* Foundation.framework */; };
-		4BF4ADED1DA9A6B00073B995 /* SiteStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF4ADEC1DA9A6B00073B995 /* SiteStorage.m */; settings = {COMPILER_FLAGS = "-fconstant-string-class=OFConstantString -fno-constant-cfstrings"; }; };
+		4BF4C3A022B602F50034FCED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF4C39F22B602F50034FCED /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,37 +45,30 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4B0719231DAA78D80065997A /* ShowDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowDetailsController.h; sourceTree = "<group>"; };
-		4B0719241DAA78D80065997A /* ShowDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowDetailsController.m; sourceTree = "<group>"; };
 		4B2E52DC1DA942840040D091 /* scrypt-pwgen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "scrypt-pwgen.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B2E52E01DA942840040D091 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4B2E52E21DA942840040D091 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		4B2E52E31DA942840040D091 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4B2E52E51DA942840040D091 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		4B2E52E61DA942840040D091 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		4B2E52E91DA942840040D091 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4B2E52EB1DA942840040D091 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B2E52EE1DA942840040D091 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B2E52F01DA942840040D091 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4B82D1131DAAAFCE00F32B2F /* AboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
-		4B82D1141DAAAFCE00F32B2F /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
+		4B31D80822B58F0F00494B15 /* SiteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteStorage.swift; sourceTree = "<group>"; };
+		4B38148322B5ED01005C27B2 /* bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
+		4B5BCEF822B5B94C00E551BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4B5BCEFA22B5CF3200E551BD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		4B5BCEFC22B5D98800E551BD /* SelectKeyFileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectKeyFileController.swift; sourceTree = "<group>"; };
+		4B5BCEFE22B5E36900E551BD /* ShowDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsController.swift; sourceTree = "<group>"; };
+		4B93656D22B5ADA00099DD08 /* HTTPServerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPServerDelegate.swift; sourceTree = "<group>"; };
+		4B93656F22B5AE2C0099DD08 /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
+		4B93657122B5B1FB0099DD08 /* AddSiteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSiteController.swift; sourceTree = "<group>"; };
 		4B9525231F96BB820095F259 /* ObjFW.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjFW.framework; path = ObjFW/Frameworks/ObjFW.framework; sourceTree = "<group>"; };
 		4B9525241F96BB820095F259 /* ObjFW_Bridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjFW_Bridge.framework; path = ObjFW/Frameworks/ObjFW_Bridge.framework; sourceTree = "<group>"; };
-		4B9EB1142008167200EB66F2 /* HTTPServerDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTTPServerDelegate.m; sourceTree = "<group>"; };
-		4B9EB1162008168400EB66F2 /* HTTPServerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPServerDelegate.h; sourceTree = "<group>"; };
 		4BA115CD1DA9432D007ED4EA /* LegacyPasswordGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LegacyPasswordGenerator.h; path = ../LegacyPasswordGenerator.h; sourceTree = "<group>"; };
 		4BA115CE1DA9432D007ED4EA /* LegacyPasswordGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LegacyPasswordGenerator.m; path = ../LegacyPasswordGenerator.m; sourceTree = "<group>"; };
 		4BA115CF1DA9432D007ED4EA /* NewPasswordGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewPasswordGenerator.h; path = ../NewPasswordGenerator.h; sourceTree = "<group>"; };
 		4BA115D01DA9432D007ED4EA /* NewPasswordGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewPasswordGenerator.m; path = ../NewPasswordGenerator.m; sourceTree = "<group>"; };
 		4BA115D11DA9432D007ED4EA /* PasswordGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PasswordGenerator.h; path = ../PasswordGenerator.h; sourceTree = "<group>"; };
 		4BA115D51DA94390007ED4EA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		4BB3CDFB1DA9764300FEE5ED /* AddSiteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSiteController.h; sourceTree = "<group>"; };
-		4BB3CDFC1DA9764300FEE5ED /* AddSiteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSiteController.m; sourceTree = "<group>"; };
-		4BC29DD41FCB5FAE00A1E786 /* SelectKeyFileController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectKeyFileController.m; sourceTree = "<group>"; };
-		4BC29DD61FCB5FC400A1E786 /* SelectKeyFileController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectKeyFileController.h; sourceTree = "<group>"; };
 		4BF4ADE91DA9A3DB0073B995 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		4BF4ADEB1DA9A6B00073B995 /* SiteStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiteStorage.h; sourceTree = "<group>"; };
-		4BF4ADEC1DA9A6B00073B995 /* SiteStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiteStorage.m; sourceTree = "<group>"; };
+		4BF4C39F22B602F50034FCED /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,26 +108,19 @@
 			isa = PBXGroup;
 			children = (
 				4B2E52EB1DA942840040D091 /* Assets.xcassets */,
-				4B82D1131DAAAFCE00F32B2F /* AboutController.h */,
-				4B82D1141DAAAFCE00F32B2F /* AboutController.m */,
-				4BB3CDFB1DA9764300FEE5ED /* AddSiteController.h */,
-				4BB3CDFC1DA9764300FEE5ED /* AddSiteController.m */,
-				4B2E52E21DA942840040D091 /* AppDelegate.h */,
-				4B2E52E31DA942840040D091 /* AppDelegate.m */,
-				4B9EB1162008168400EB66F2 /* HTTPServerDelegate.h */,
-				4B9EB1142008167200EB66F2 /* HTTPServerDelegate.m */,
+				4B93656F22B5AE2C0099DD08 /* AboutController.swift */,
+				4B93657122B5B1FB0099DD08 /* AddSiteController.swift */,
+				4B5BCEF822B5B94C00E551BD /* AppDelegate.swift */,
+				4B93656D22B5ADA00099DD08 /* HTTPServerDelegate.swift */,
 				4B2E52F01DA942840040D091 /* Info.plist */,
 				4B2E52ED1DA942840040D091 /* LaunchScreen.storyboard */,
 				4B2E52E81DA942840040D091 /* Main.storyboard */,
-				4B2E52E51DA942840040D091 /* MainViewController.h */,
-				4B2E52E61DA942840040D091 /* MainViewController.m */,
-				4BC29DD61FCB5FC400A1E786 /* SelectKeyFileController.h */,
-				4BC29DD41FCB5FAE00A1E786 /* SelectKeyFileController.m */,
-				4B0719231DAA78D80065997A /* ShowDetailsController.h */,
-				4B0719241DAA78D80065997A /* ShowDetailsController.m */,
-				4BF4ADEB1DA9A6B00073B995 /* SiteStorage.h */,
-				4BF4ADEC1DA9A6B00073B995 /* SiteStorage.m */,
-				4B2E52E01DA942840040D091 /* main.m */,
+				4B5BCEFA22B5CF3200E551BD /* MainViewController.swift */,
+				4B5BCEFC22B5D98800E551BD /* SelectKeyFileController.swift */,
+				4B5BCEFE22B5E36900E551BD /* ShowDetailsController.swift */,
+				4B31D80822B58F0F00494B15 /* SiteStorage.swift */,
+				4B38148322B5ED01005C27B2 /* bridge.h */,
+				4BF4C39F22B602F50034FCED /* main.m */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -195,6 +181,7 @@
 					4B2E52DB1DA942840040D091 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = MXKNFCKFL6;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -204,6 +191,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -235,17 +223,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B82D1151DAAAFCE00F32B2F /* AboutController.m in Sources */,
-				4BC29DD51FCB5FAE00A1E786 /* SelectKeyFileController.m in Sources */,
-				4BB3CDFD1DA9764300FEE5ED /* AddSiteController.m in Sources */,
-				4B2E52E41DA942840040D091 /* AppDelegate.m in Sources */,
-				4B9EB1152008167200EB66F2 /* HTTPServerDelegate.m in Sources */,
+				4B5BCEF922B5B94C00E551BD /* AppDelegate.swift in Sources */,
+				4B93656E22B5ADA00099DD08 /* HTTPServerDelegate.swift in Sources */,
+				4B5BCEFB22B5CF3200E551BD /* MainViewController.swift in Sources */,
+				4B93657222B5B1FB0099DD08 /* AddSiteController.swift in Sources */,
 				4BA115D21DA9432D007ED4EA /* LegacyPasswordGenerator.m in Sources */,
-				4B2E52E71DA942840040D091 /* MainViewController.m in Sources */,
 				4BA115D31DA9432D007ED4EA /* NewPasswordGenerator.m in Sources */,
-				4B0719251DAA78D80065997A /* ShowDetailsController.m in Sources */,
-				4BF4ADED1DA9A6B00073B995 /* SiteStorage.m in Sources */,
-				4B2E52E11DA942840040D091 /* main.m in Sources */,
+				4B31D80922B58F0F00494B15 /* SiteStorage.swift in Sources */,
+				4B5BCEFD22B5D98800E551BD /* SelectKeyFileController.swift in Sources */,
+				4B5BCEFF22B5E36900E551BD /* ShowDetailsController.swift in Sources */,
+				4BF4C3A022B602F50034FCED /* main.m in Sources */,
+				4B93657022B5AE2C0099DD08 /* AboutController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,8 +378,12 @@
 				);
 				HEADER_SEARCH_PATHS = ObjFW/include;
 				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "zone.heap.scrypt-pwgen.ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = bridge.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -411,8 +403,11 @@
 				);
 				HEADER_SEARCH_PATHS = ObjFW/include;
 				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "zone.heap.scrypt-pwgen.ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = bridge.h;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

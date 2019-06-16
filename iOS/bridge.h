@@ -20,13 +20,6 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "HTTPServerDelegate.h"
-
-@implementation HTTPServerDelegate
--      (void)server: (OFHTTPServer *)server
-  didReceiveRequest: (OFHTTPRequest *)request
-	   response: (OFHTTPResponse *)response
-{
-	of_log(@"%@", request);
-}
-@end
+#import "PasswordGenerator.h"
+#import "NewPasswordGenerator.h"
+#import "LegacyPasswordGenerator.h"

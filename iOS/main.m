@@ -24,7 +24,7 @@
 #import <ObjFW/ObjFW.h>
 #import <ObjFW_Bridge/ObjFW_Bridge.h>
 
-#import "AppDelegate.h"
+#import "scrypt_pwgen-Swift.h"
 
 @interface OFAppDelegate: OFObject <OFApplicationDelegate>
 @end
