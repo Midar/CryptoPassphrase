@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2016 - 2019 Jonathan Schleifer <js@heap.zone>
  *
- * https://heap.zone/git/scrypt-pwgen.git
+ * https://heap.zone/git/cryptopassphrase.git
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -40,26 +40,29 @@ class AboutController: UIViewController, UIWebViewDelegate {
             "}" +
             "" +
             "#title {" +
-            "    font-size: 2.5em;" +
+            "    font-size: 2.1em;" +
             "    font-weight: bold;" +
+            "    text-align: center;" +
             "}" +
             "" +
             "#copyright {" +
             "    font-size: 0.9em;" +
             "    font-weight: bold;" +
+            "    text-align: center;" +
             "}" +
             "</style>" +
             "</head>" +
             "<body>" +
             "<div id='title'>" +
-            "  scrypt-pwgen \(version ?? "")" +
+            "  CryptoPassphrase \(version ?? "")" +
             "</div>" +
             "<div id='copyright'>" +
             "  Copyright © 2016 - 2019 Jonathan Schleifer" +
             "</div>" +
             "<p name='free_software'>" +
-            "  scrypt-pwgen is free software and the source code is available" +
-            "  at <a href='https://heap.zone/scrypt-pwgen/'>here</a>." +
+            "  CryptoPassphrase is free software and the source code is" +
+            "  available at" +
+            "  <a href='https://heap.zone/cryptopassphrase/'>here</a>." +
             "</p>" +
             "<p name='objfw'>" +
             "  It makes use of the" +

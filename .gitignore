@@ -1,7 +1,7 @@
 *.o
 *~
-scrypt-pwgen
+cryptopassphrase
+iOS/CryptoPassphrase.xcodeproj/project.xcworkspace
+iOS/CryptoPassphrase.xcodeproj/xcuserdata
 iOS/DerivedData
 iOS/ObjFW
-iOS/scrypt-pwgen.xcodeproj/project.xcworkspace
-iOS/scrypt-pwgen.xcodeproj/xcuserdata

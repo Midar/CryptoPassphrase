@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2016 - 2019 Jonathan Schleifer <js@heap.zone>
  *
- * https://heap.zone/git/scrypt-pwgen.git
+ * https://heap.zone/git/cryptopassphrase.git
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -24,20 +24,12 @@
 #import <ObjFW/ObjFW.h>
 #import <ObjFW_Bridge/ObjFW_Bridge.h>
 
-#import "scrypt_pwgen-Swift.h"
+#import "CryptoPassphrase-Swift.h"
 
 @interface OFAppDelegate: OFObject <OFApplicationDelegate>
 @end
 
 OF_APPLICATION_DELEGATE(OFAppDelegate)
-
-void
-_references_to_categories_of_ObjFW_Bridge(void)
-{
-	_NSString_OFObject_reference = 1;
-	_OFArray_NSObject_reference = 1;
-	_OFString_NSObject_reference = 1;
-}
 
 @implementation OFAppDelegate
 - (void)applicationDidFinishLaunching

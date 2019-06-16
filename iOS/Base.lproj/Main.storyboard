@@ -31,7 +31,7 @@
         <!--Sites-->
         <scene sceneID="raj-gx-00d">
             <objects>
-                <viewController id="P19-6i-fpd" customClass="MainViewController" customModule="scrypt_pwgen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="P19-6i-fpd" customClass="MainViewController" customModule="CryptoPassphrase" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XVy-9K-Bul"/>
                         <viewControllerLayoutGuide type="bottom" id="TZK-mv-9Bn"/>
@@ -92,7 +92,7 @@
         <!--About-->
         <scene sceneID="rga-fS-ski">
             <objects>
-                <viewController title="About" id="MZ3-iZ-Dsf" customClass="AboutController" customModule="scrypt_pwgen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="About" id="MZ3-iZ-Dsf" customClass="AboutController" customModule="CryptoPassphrase" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8k0-QJ-gsC"/>
                         <viewControllerLayoutGuide type="bottom" id="NSX-G5-c03"/>
@@ -129,7 +129,7 @@
         <!--Add Site Controller-->
         <scene sceneID="IxZ-dn-p6h">
             <objects>
-                <tableViewController id="mTn-Td-fIF" customClass="AddSiteController" customModule="scrypt_pwgen" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="mTn-Td-fIF" customClass="AddSiteController" customModule="CryptoPassphrase" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="cum-L6-K1B">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -305,7 +305,7 @@
         <!--Select Key File Controller-->
         <scene sceneID="fKq-Aa-JNA">
             <objects>
-                <tableViewController id="4bs-rP-TxE" customClass="SelectKeyFileController" customModule="scrypt_pwgen" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="4bs-rP-TxE" customClass="SelectKeyFileController" customModule="CryptoPassphrase" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="SYH-wm-J8Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -343,7 +343,7 @@
         <!--Show Details Controller-->
         <scene sceneID="rn9-fJ-mg7">
             <objects>
-                <tableViewController id="ayJ-fs-aIU" customClass="ShowDetailsController" customModule="scrypt_pwgen" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ayJ-fs-aIU" customClass="ShowDetailsController" customModule="CryptoPassphrase" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="vWS-Yc-qQ5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -1,5 +1,5 @@
 all:
-	@objfw-compile -Werror -o scrypt-pwgen *.m
+	@objfw-compile -Werror -o cryptopassphrase *.m
 
 clean:
-	rm -f *.o *~ scrypt-pwgen
+	rm -f *.o *~ cryptopassphrase

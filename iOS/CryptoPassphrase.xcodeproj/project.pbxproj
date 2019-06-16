@@ -45,7 +45,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4B2E52DC1DA942840040D091 /* scrypt-pwgen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "scrypt-pwgen.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B2E52DC1DA942840040D091 /* CryptoPassphrase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoPassphrase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B2E52E91DA942840040D091 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4B2E52EB1DA942840040D091 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B2E52EE1DA942840040D091 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -89,8 +89,7 @@
 		4B2E52D31DA942840040D091 = {
 			isa = PBXGroup;
 			children = (
-				4BA115CC1DA9431D007ED4EA /* scrypt-pwgen */,
-				4B2E52DE1DA942840040D091 /* iOS */,
+				4BA115CC1DA9431D007ED4EA /* CryptoPassphrase */,
 				4B2E52DD1DA942840040D091 /* Products */,
 				4BA115D41DA94390007ED4EA /* Frameworks */,
 			);
@@ -99,7 +98,7 @@
 		4B2E52DD1DA942840040D091 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4B2E52DC1DA942840040D091 /* scrypt-pwgen.app */,
+				4B2E52DC1DA942840040D091 /* CryptoPassphrase.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,16 +124,17 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		4BA115CC1DA9431D007ED4EA /* scrypt-pwgen */ = {
+		4BA115CC1DA9431D007ED4EA /* CryptoPassphrase */ = {
 			isa = PBXGroup;
 			children = (
+				4B2E52DE1DA942840040D091 /* iOS */,
 				4BA115CD1DA9432D007ED4EA /* LegacyPasswordGenerator.h */,
 				4BA115CE1DA9432D007ED4EA /* LegacyPasswordGenerator.m */,
 				4BA115CF1DA9432D007ED4EA /* NewPasswordGenerator.h */,
 				4BA115D01DA9432D007ED4EA /* NewPasswordGenerator.m */,
 				4BA115D11DA9432D007ED4EA /* PasswordGenerator.h */,
 			);
-			name = "scrypt-pwgen";
+			name = CryptoPassphrase;
 			sourceTree = "<group>";
 		};
 		4BA115D41DA94390007ED4EA /* Frameworks */ = {
@@ -151,9 +151,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4B2E52DB1DA942840040D091 /* scrypt-pwgen */ = {
+		4B2E52DB1DA942840040D091 /* CryptoPassphrase */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4B2E52F31DA942840040D091 /* Build configuration list for PBXNativeTarget "scrypt-pwgen" */;
+			buildConfigurationList = 4B2E52F31DA942840040D091 /* Build configuration list for PBXNativeTarget "CryptoPassphrase" */;
 			buildPhases = (
 				4B2E52D81DA942840040D091 /* Sources */,
 				4B2E52D91DA942840040D091 /* Frameworks */,
@@ -164,9 +164,9 @@
 			);
 			dependencies = (
 			);
-			name = "scrypt-pwgen";
-			productName = "scrypt-pwgen";
-			productReference = 4B2E52DC1DA942840040D091 /* scrypt-pwgen.app */;
+			name = CryptoPassphrase;
+			productName = CryptoPassphrase;
+			productReference = 4B2E52DC1DA942840040D091 /* CryptoPassphrase.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4B2E52D71DA942840040D091 /* Build configuration list for PBXProject "scrypt-pwgen" */;
+			buildConfigurationList = 4B2E52D71DA942840040D091 /* Build configuration list for PBXProject "CryptoPassphrase" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -200,7 +200,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4B2E52DB1DA942840040D091 /* scrypt-pwgen */,
+				4B2E52DB1DA942840040D091 /* CryptoPassphrase */,
 			);
 		};
 /* End PBXProject section */
@@ -379,7 +379,7 @@
 				HEADER_SEARCH_PATHS = ObjFW/include;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "zone.heap.scrypt-pwgen.ios";
+				PRODUCT_BUNDLE_IDENTIFIER = zone.heap.cryptopassphrase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = bridge.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -404,7 +404,7 @@
 				HEADER_SEARCH_PATHS = ObjFW/include;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "zone.heap.scrypt-pwgen.ios";
+				PRODUCT_BUNDLE_IDENTIFIER = zone.heap.cryptopassphrase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = bridge.h;
 				SWIFT_VERSION = 5.0;
@@ -415,7 +415,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4B2E52D71DA942840040D091 /* Build configuration list for PBXProject "scrypt-pwgen" */ = {
+		4B2E52D71DA942840040D091 /* Build configuration list for PBXProject "CryptoPassphrase" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4B2E52F11DA942840040D091 /* Debug */,
@@ -424,7 +424,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4B2E52F31DA942840040D091 /* Build configuration list for PBXNativeTarget "scrypt-pwgen" */ = {
+		4B2E52F31DA942840040D091 /* Build configuration list for PBXNativeTarget "CryptoPassphrase" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4B2E52F41DA942840040D091 /* Debug */,

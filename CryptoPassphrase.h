@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2016 - 2019 Jonathan Schleifer <js@heap.zone>
  *
- * https://heap.zone/git/scrypt-pwgen.git
+ * https://heap.zone/git/cryptopassphrase.git
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -22,7 +22,7 @@
 
 #import <ObjFW/ObjFW.h>
 
-@interface ScryptPWGen: OFObject <OFApplicationDelegate>
+@interface CryptoPassphrase: OFObject <OFApplicationDelegate>
 {
 	size_t _length;
 	bool _legacy, _repeat;

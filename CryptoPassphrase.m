@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2016 - 2019 Jonathan Schleifer <js@heap.zone>
  *
- * https://heap.zone/git/scrypt-pwgen.git
+ * https://heap.zone/git/cryptopassphrase.git
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -22,11 +22,11 @@
 
 #include <unistd.h>
 
-#import "ScryptPWGen.h"
+#import "CryptoPassphrase.h"
 #import "NewPasswordGenerator.h"
 #import "LegacyPasswordGenerator.h"
 
-OF_APPLICATION_DELEGATE(ScryptPWGen)
+OF_APPLICATION_DELEGATE(CryptoPassphrase)
 
 static void
 showHelp(OFStream *output, bool verbose)
@@ -46,7 +46,7 @@ showHelp(OFStream *output, bool verbose)
 		    @"    -r  --repeat  Repeat input\n"];
 }
 
-@implementation ScryptPWGen
+@implementation CryptoPassphrase
 - (void)applicationDidFinishLaunching
 {
 	OFString *keyFilePath, *lengthString;
@@ -190,7 +190,8 @@ showHelp(OFStream *output, bool verbose)
 		of_explicit_memset(passphrase, 0, strlen(passphrase));
 
 		if (keyFile != nil)
-			of_explicit_memset(keyFile.items, 0, keyFile.count);
+			of_explicit_memset(keyFile.mutableItems, 0,
+			    keyFile.count);
 	}
 
 	[OFApplication terminate];
