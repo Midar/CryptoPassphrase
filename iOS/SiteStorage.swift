@@ -79,7 +79,6 @@ class SiteStorage: OFObject {
     func length(forSite name: OFString) -> size_t {
         guard let site = storage[name] else {
             OFInvalidArgumentException().throw()
-            abort()
         }
 
         return (site[SiteStorage.lengthField] as! OFNumber).sizeValue
@@ -88,7 +87,6 @@ class SiteStorage: OFObject {
     func isLegacy(site name: OFString) -> Bool {
         guard let site = storage[name] else {
             OFInvalidArgumentException().throw()
-            abort()
         }
 
         return (site[SiteStorage.legacyField] as! OFNumber).boolValue
@@ -97,7 +95,6 @@ class SiteStorage: OFObject {
     func keyFile(forSite name: OFString) -> OFString? {
         guard let site = storage[name] else {
             OFInvalidArgumentException().throw()
-            abort()
         }
 
         let keyFile = site[SiteStorage.keyFileField]
