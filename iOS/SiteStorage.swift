@@ -21,7 +21,7 @@
  */
 
 import ObjFW
-import ObjFW_Bridge
+import ObjFWBridge
 
 class SiteStorage: OFObject {
     private typealias Storage =

@@ -22,7 +22,7 @@
 
 import UIKit
 import ObjFW
-import ObjFW_Bridge
+import ObjFWBridge
 
 class ShowDetailsController: UITableViewController, UITextFieldDelegate {
     @IBOutlet var nameField: UITextField?

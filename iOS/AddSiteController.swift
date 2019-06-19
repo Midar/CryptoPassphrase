@@ -22,7 +22,7 @@
 
 import UIKit
 import ObjFW
-import ObjFW_Bridge
+import ObjFWBridge
 
 class AddSiteController: UITableViewController {
     @IBOutlet var nameField: UITextField?

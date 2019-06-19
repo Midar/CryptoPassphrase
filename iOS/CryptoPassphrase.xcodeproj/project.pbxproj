@@ -19,9 +19,9 @@
 		4B93657022B5AE2C0099DD08 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93656F22B5AE2C0099DD08 /* AboutController.swift */; };
 		4B93657222B5B1FB0099DD08 /* AddSiteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93657122B5B1FB0099DD08 /* AddSiteController.swift */; };
 		4B9525251F96BB900095F259 /* ObjFW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B9525231F96BB820095F259 /* ObjFW.framework */; };
-		4B9525261F96BB900095F259 /* ObjFW_Bridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B9525241F96BB820095F259 /* ObjFW_Bridge.framework */; };
+		4B9525261F96BB900095F259 /* ObjFWBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B9525241F96BB820095F259 /* ObjFWBridge.framework */; };
 		4B9525291F994CD30095F259 /* ObjFW.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B9525231F96BB820095F259 /* ObjFW.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4B95252A1F9953350095F259 /* ObjFW_Bridge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B9525241F96BB820095F259 /* ObjFW_Bridge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4B95252A1F9953350095F259 /* ObjFWBridge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B9525241F96BB820095F259 /* ObjFWBridge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4BA115D21DA9432D007ED4EA /* LegacyPasswordGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA115CE1DA9432D007ED4EA /* LegacyPasswordGenerator.m */; settings = {COMPILER_FLAGS = "-fconstant-string-class=OFConstantString -fno-constant-cfstrings"; }; };
 		4BA115D31DA9432D007ED4EA /* NewPasswordGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA115D01DA9432D007ED4EA /* NewPasswordGenerator.m */; settings = {COMPILER_FLAGS = "-fconstant-string-class=OFConstantString -fno-constant-cfstrings"; }; };
 		4BA115D61DA94390007ED4EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA115D51DA94390007ED4EA /* UIKit.framework */; };
@@ -36,8 +36,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4B95252A1F9953350095F259 /* ObjFW_Bridge.framework in Embed Frameworks */,
 				4B9525291F994CD30095F259 /* ObjFW.framework in Embed Frameworks */,
+				4B95252A1F9953350095F259 /* ObjFWBridge.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -60,7 +60,7 @@
 		4B93656F22B5AE2C0099DD08 /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		4B93657122B5B1FB0099DD08 /* AddSiteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSiteController.swift; sourceTree = "<group>"; };
 		4B9525231F96BB820095F259 /* ObjFW.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjFW.framework; path = ObjFW/Frameworks/ObjFW.framework; sourceTree = "<group>"; };
-		4B9525241F96BB820095F259 /* ObjFW_Bridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjFW_Bridge.framework; path = ObjFW/Frameworks/ObjFW_Bridge.framework; sourceTree = "<group>"; };
+		4B9525241F96BB820095F259 /* ObjFWBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjFWBridge.framework; path = ObjFW/Frameworks/ObjFWBridge.framework; sourceTree = "<group>"; };
 		4BA115CD1DA9432D007ED4EA /* LegacyPasswordGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LegacyPasswordGenerator.h; path = ../LegacyPasswordGenerator.h; sourceTree = "<group>"; };
 		4BA115CE1DA9432D007ED4EA /* LegacyPasswordGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LegacyPasswordGenerator.m; path = ../LegacyPasswordGenerator.m; sourceTree = "<group>"; };
 		4BA115CF1DA9432D007ED4EA /* NewPasswordGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewPasswordGenerator.h; path = ../NewPasswordGenerator.h; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 				4BF4ADEA1DA9A3DB0073B995 /* Foundation.framework in Frameworks */,
 				4BA115D61DA94390007ED4EA /* UIKit.framework in Frameworks */,
 				4B9525251F96BB900095F259 /* ObjFW.framework in Frameworks */,
-				4B9525261F96BB900095F259 /* ObjFW_Bridge.framework in Frameworks */,
+				4B9525261F96BB900095F259 /* ObjFWBridge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,7 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				4B9525231F96BB820095F259 /* ObjFW.framework */,
-				4B9525241F96BB820095F259 /* ObjFW_Bridge.framework */,
+				4B9525241F96BB820095F259 /* ObjFWBridge.framework */,
 				4BF4ADE91DA9A3DB0073B995 /* Foundation.framework */,
 				4BA115D51DA94390007ED4EA /* UIKit.framework */,
 			);

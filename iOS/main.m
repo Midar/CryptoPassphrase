@@ -20,9 +20,9 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <UIKit/UIKit.h>
-#import <ObjFW/ObjFW.h>
-#import <ObjFW_Bridge/ObjFW_Bridge.h>
+@import UIKit;
+@import ObjFW;
+@import ObjFWBridge;
 
 #import "CryptoPassphrase-Swift.h"
 
