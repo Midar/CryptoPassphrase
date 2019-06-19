@@ -24,16 +24,13 @@ import ObjFW
 import ObjFWBridge
 
 class SiteStorage: OFObject {
-    private typealias Storage =
-        OFMutableDictionary<OFString, OFDictionary<OFNumber, AnyObject>>
-
-    private static let lengthField = OFNumber(uInt8: 0)
-    private static let legacyField = OFNumber(uInt8: 1)
-    private static let keyFileField = OFNumber(uInt8: 2)
+    private static let lengthField = NSNumber(value: 0)
+    private static let legacyField = NSNumber(value: 1)
+    private static let keyFileField = NSNumber(value: 2)
 
     private var path: OFString
-    private var storage: Storage
-    private var sites: OFArray<OFString>
+    private var storage: [String: [NSNumber: AnyObject]]
+    private var sites: [String]
 
     override init() {
         let fileManager = OFFileManager.default
@@ -45,91 +42,80 @@ class SiteStorage: OFObject {
 
         let path = userDataPath.appendingPathComponent(
             OFString(utf8String: "sites.msgpack"))
-        var storage: Storage? = nil
+
+        var storage: [String: [NSNumber: AnyObject]]? = nil
         OFException.try({
-            storage = OFData(contentsOfFile: path).messagePackValue as? Storage
+            let decoded = (OFData(contentsOfFile: path).messagePackValue)
+                as? OFDictionary<OFString, OFDictionary<OFNumber, AnyObject>>
+            storage =
+                (decoded?.nsObject as? [String: [NSNumber: AnyObject]]) ?? [:]
         }, catch: { (OFException) in
-            storage = OFMutableDictionary()
+            storage = [:]
         })
 
         self.path = path
         self.storage = storage!
-        self.sites = self.storage.allKeys.sorted
+        self.sites = self.storage.keys.sorted()
     }
 
-    func sites(withFilter filter: OFString?) -> OFArray<OFString> {
-        // FIXME: We need case folding here, but there is no method for it yet.
-        let filter = filter?.lowercase
-
-        return storage.allKeys.sorted.filteredArray({
-            (name: Any, index: size_t) -> Bool in
-            if filter == nil {
-                return true
+    func sites(withFilter filter: String?) -> [String] {
+        return storage.keys.sorted().filter({ (name) in
+            if let filter = filter {
+                return name.localizedCaseInsensitiveContains(filter)
             }
-
-            let name = name as! OFString
-            return name.lowercase.contains(filter!)
+            return true
         })
     }
 
-    func hasSite(_ name: OFString) -> Bool {
+    func hasSite(_ name: String) -> Bool {
         return (storage[name] != nil)
     }
 
-    func length(forSite name: OFString) -> size_t {
+    func length(forSite name: String) -> UInt {
         guard let site = storage[name] else {
             OFInvalidArgumentException().throw()
         }
 
-        return (site[SiteStorage.lengthField] as! OFNumber).sizeValue
+        return (site[SiteStorage.lengthField] as! NSNumber).uintValue
     }
 
-    func isLegacy(site name: OFString) -> Bool {
-        guard let site = storage[name] else {
-            OFInvalidArgumentException().throw()
-        }
-
-        return (site[SiteStorage.legacyField] as! OFNumber).boolValue
+    func isLegacy(site name: String) -> Bool {
+        guard let site = storage[name] else { return false }
+        return (site[SiteStorage.legacyField] as! NSNumber).boolValue
     }
 
-    func keyFile(forSite name: OFString) -> OFString? {
-        guard let site = storage[name] else {
-            OFInvalidArgumentException().throw()
-        }
+    func keyFile(forSite name: String) -> String? {
+        guard let site = storage[name] else { return nil }
 
-        let keyFile = site[SiteStorage.keyFileField]
-        if keyFile is OFNull {
+        guard let keyFile = site[SiteStorage.keyFileField], !(keyFile is NSNull)
+        else {
             return nil
         }
 
-        return keyFile as? OFString
+        return keyFile as? String
     }
 
-    func setSite(_ name: OFString, length: size_t, legacy: Bool,
-                 keyFile: OFString?) {
-        let siteDictionary = OFMutableDictionary<OFNumber, AnyObject>()
+    func setSite(_ name: String, length: UInt, isLegacy: Bool,
+                 keyFile: String?) {
+        var siteDictionary: [NSNumber: AnyObject] = [
+            SiteStorage.lengthField: NSNumber(value: length),
+            SiteStorage.legacyField: NSNumber(value: isLegacy),
+        ]
+        siteDictionary[SiteStorage.keyFileField] = keyFile as AnyObject?
 
-        siteDictionary.setObject(OFNumber(size: length),
-                                 forKey: SiteStorage.lengthField)
-        siteDictionary.setObject(OFNumber(bool: legacy),
-                                 forKey: SiteStorage.legacyField)
-        if keyFile != nil {
-            siteDictionary.setObject(keyFile!, forKey: SiteStorage.keyFileField)
-        }
-
-        siteDictionary.makeImmutable()
-        storage.setObject(siteDictionary, forKey: name)
-
+        storage[name] = siteDictionary
         self.update()
     }
 
-    func removeSite(_ name: OFString) {
-        self.storage.removeObject(forKey: name)
+    func removeSite(_ name: String) {
+        storage[name] = nil
         self.update()
     }
 
     private func update() {
-        storage.messagePackRepresentation.write(toFile: path)
-        sites = storage.allKeys.sorted
+        let ofStorage = (storage as NSDictionary).ofObject
+
+        ofStorage.messagePackRepresentation.write(toFile: path)
+        sites = storage.keys.sorted()
     }
 }

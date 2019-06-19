@@ -32,10 +32,10 @@ class ShowDetailsController: UITableViewController, UITextFieldDelegate {
     @IBOutlet var passphraseField: UITextField?
     public var mainViewController: MainViewController?
 
-    private var name: OFString = "".ofObject
-    private var length: size_t = 0
+    private var name: String = ""
+    private var length: UInt = 0
     private var isLegacy: Bool = false
-    private var keyFile: OFString? = nil
+    private var keyFile: String? = nil
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -50,10 +50,10 @@ class ShowDetailsController: UITableViewController, UITextFieldDelegate {
         isLegacy = siteStorage.isLegacy(site: name)
         keyFile = siteStorage.keyFile(forSite: name)
 
-        nameField?.text = name.nsObject
+        nameField?.text = name
         lengthField?.text = "\(length)"
         legacySwitch?.isOn = isLegacy
-        keyFileField?.text = keyFile?.nsObject
+        keyFileField?.text = keyFile
 
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -134,8 +134,8 @@ class ShowDetailsController: UITableViewController, UITextFieldDelegate {
     private func generateWithCallback(_ block: (_: NSMutableString) -> ()) {
         let generator: PasswordGenerator = isLegacy ?
             LegacyPasswordGenerator() : NewPasswordGenerator()
-        generator.site = name
-        generator.length = length
+        generator.site = name.ofObject
+        generator.length = size_t(length)
 
         if let keyFile = keyFile {
             guard let documentDirectory = NSSearchPathForDirectoriesInDomains(
@@ -145,7 +145,8 @@ class ShowDetailsController: UITableViewController, UITextFieldDelegate {
                 return
             }
 
-            let keyFilePath = documentDirectory.ofObject.appending(keyFile)
+            let keyFilePath =
+                documentDirectory.ofObject.appending(keyFile.ofObject)
             generator.keyFile = OFMutableData(contentsOfFile: keyFilePath)
         }
 

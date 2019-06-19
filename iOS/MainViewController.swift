@@ -25,7 +25,7 @@ import ObjFW
 
 class MainViewController: UIViewController, UISearchBarDelegate,
                           UITableViewDelegate, UITableViewDataSource {
-    public var sites = OFArray<OFString>()
+    public var sites: [String] = []
     public var siteStorage = SiteStorage()
     @IBOutlet var searchBar: UISearchBar?
     @IBOutlet var tableView: UITableView?
@@ -51,12 +51,12 @@ class MainViewController: UIViewController, UISearchBarDelegate,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "site") ??
             UITableViewCell(style: .default, reuseIdentifier: "site")
-        cell.textLabel?.text = sites[indexPath.row].nsObject
+        cell.textLabel?.text = sites[indexPath.row]
         return cell
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        sites = siteStorage.sites(withFilter: searchBar.text?.ofObject)
+        sites = siteStorage.sites(withFilter: searchBar.text)
         tableView?.reloadData()
     }
 

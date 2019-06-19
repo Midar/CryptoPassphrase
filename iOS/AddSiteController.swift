@@ -62,28 +62,16 @@ class AddSiteController: UITableViewController {
     }
 
     @IBAction func done(_ sender: Any) {
-        guard let name = nameField?.text?.ofObject else { return }
-        guard let lengthString = lengthField?.text?.ofObject else { return }
+        guard let name = nameField?.text else { return }
+        guard let lengthString = lengthField?.text else { return }
 
-        guard name.length > 0 else {
+        guard name.count > 0 else {
             showAlert(controller: self, title: "Name missing",
                       message: "Please enter a name.")
             return
         }
 
-        var lengthValid = true
-        var length: size_t = 0
-        OFException.try({
-            length = lengthString.decimalValue
-
-            if length < 3 || length > 64 {
-                lengthValid = false
-            }
-        }, catch: { (OFException) in
-            lengthValid = false
-        })
-
-        guard lengthValid else {
+        guard let length = UInt(lengthString), length >= 3, length <= 64 else {
             showAlert(controller: self, title: "Invalid length",
                       message: "Please enter a number between 3 and 64.")
             return
@@ -97,10 +85,9 @@ class AddSiteController: UITableViewController {
             return
         }
 
-        let keyFile = self.keyFile?.ofObject
         siteStorage.setSite(name, length: length,
-                            legacy: legacySwitch?.isOn ?? false,
-                            keyFile: keyFile)
+                            isLegacy: legacySwitch?.isOn ?? false,
+                            keyFile: self.keyFile)
         mainViewController?.reset()
         navigationController?.popViewController(animated: true)
     }
