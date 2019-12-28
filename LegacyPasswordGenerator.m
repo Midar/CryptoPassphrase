@@ -55,7 +55,8 @@
 
 - (void)derivePassword
 {
-	OFSHA256Hash *siteHash = [OFSHA256Hash cryptoHash];
+	OFSHA256Hash *siteHash = [OFSHA256Hash
+	    cryptoHashWithAllowsSwappableMemory: true];
 	size_t passphraseLength, combinedPassphraseLength;
 	char *combinedPassphrase;
 
@@ -89,7 +90,7 @@
 
 		of_scrypt(8, 524288, 2, siteHash.digest,
 		    [siteHash.class digestSize], combinedPassphrase,
-		    combinedPassphraseLength, _output, _length);
+		    combinedPassphraseLength, _output, _length, true);
 	} @finally {
 		of_explicit_memset(combinedPassphrase, 0,
 		    combinedPassphraseLength);
