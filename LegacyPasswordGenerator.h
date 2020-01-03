@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2016 - 2019 Jonathan Schleifer <js@heap.zone>
+ * Copyright (c) 2016 - 2020 Jonathan Schleifer <js@nil.im>
  *
- * https://heap.zone/git/cryptopassphrase.git
+ * https://nil.im/git/cryptopassphrase.git
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -27,7 +27,6 @@
 	size_t _length;
 	OFString *_site;
 	OFData *_keyFile;
-	const char *_passphrase;
-	unsigned char *_output;
+	OFSecureData *_passphrase, *_output;
 }
 @end

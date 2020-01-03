@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2016 - 2019 Jonathan Schleifer <js@heap.zone>
+ * Copyright (c) 2016 - 2020 Jonathan Schleifer <js@nil.im>
  *
- * https://heap.zone/git/cryptopassphrase.git
+ * https://nil.im/git/cryptopassphrase.git
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -64,7 +64,9 @@ showHelp(OFStream *output, bool verbose)
 	OFMutableData *keyFile = nil;
 	OFString *prompt;
 	const char *promptCString;
-	char *passphrase;
+	char *passphraseCString;
+	size_t passphraseLength;
+	OFSecureData *passphrase;
 
 	while ((option = [optionsParser nextOption]) != '\0') {
 		switch (option) {
@@ -143,56 +145,42 @@ showHelp(OFStream *output, bool verbose)
 	if (keyFilePath != nil)
 		keyFile = [OFMutableData dataWithContentsOfFile: keyFilePath];
 
-	passphrase = getpass(promptCString);
+	passphraseCString = getpass(promptCString);
+	passphraseLength = strlen(passphraseCString);
 	@try {
-		if (_repeat) {
-			char *passphraseCopy = of_strdup(passphrase);
-
-			if (passphraseCopy == NULL)
-				@throw [OFOutOfMemoryException exception];
-
-			@try {
-				of_string_encoding_t encoding =
-				    [OFLocale encoding];
-
-				prompt = [OFString stringWithFormat:
-				    @"Repeat passphrase for site \"%@\": ",
-				    generator.site];
-				passphrase = getpass(
-				    [prompt cStringWithEncoding: encoding]);
-
-				if (strcmp(passphrase, passphraseCopy) != 0) {
-					[of_stderr writeString:
-					    @"Passphrases do not match!\n"];
-					[OFApplication terminateWithStatus: 1];
-				}
-			} @finally {
-				of_explicit_memset(passphraseCopy, 0,
-				    strlen(passphraseCopy));
-				free(passphraseCopy);
-			}
-		}
-
-		generator.keyFile = keyFile;
-		generator.passphrase = passphrase;
-
-		[generator derivePassword];
-		@try {
-			[of_stdout writeBuffer: generator.output
-					length: generator.length];
-			[of_stdout writeBuffer: "\n"
-					length: 1];
-		} @finally {
-			of_explicit_memset(generator.output, 0,
-			    generator.length);
-		}
+		passphrase = [OFSecureData dataWithCount: passphraseLength + 1
+				   allowsSwappableMemory: false];
+		memcpy(passphrase.mutableItems, passphraseCString,
+		    passphraseLength + 1);
 	} @finally {
-		of_explicit_memset(passphrase, 0, strlen(passphrase));
-
-		if (keyFile != nil)
-			of_explicit_memset(keyFile.mutableItems, 0,
-			    keyFile.count);
+		of_explicit_memset(passphraseCString, '\0', passphraseLength);
 	}
+
+	if (_repeat) {
+		of_string_encoding_t encoding = [OFLocale encoding];
+
+		prompt = [OFString stringWithFormat:
+		    @"Repeat passphrase for site \"%@\": ", generator.site];
+		passphraseCString =
+		    getpass([prompt cStringWithEncoding: encoding]);
+
+		if (strcmp(passphraseCString, passphrase.items) != 0) {
+			[of_stderr writeString: @"Passphrases do not match!\n"];
+			[OFApplication terminateWithStatus: 1];
+		}
+
+		of_explicit_memset(passphraseCString, '\0',
+		    strlen(passphraseCString));
+	}
+
+	generator.keyFile = keyFile;
+	generator.passphrase = passphrase;
+
+	[generator derivePassword];
+	[of_stdout writeBuffer: generator.output.items
+			length: generator.length];
+	[of_stdout writeBuffer: "\n"
+			length: 1];
 
 	[OFApplication terminate];
 }

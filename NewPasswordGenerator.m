@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2016 - 2019 Jonathan Schleifer <js@heap.zone>
+ * Copyright (c) 2016 - 2020 Jonathan Schleifer <js@nil.im>
  *
- * https://heap.zone/git/cryptopassphrase.git
+ * https://nil.im/git/cryptopassphrase.git
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -45,19 +45,19 @@
 	OFSHA384Hash *siteHash = [OFSHA384Hash
 	    cryptoHashWithAllowsSwappableMemory: true];
 	size_t passphraseLength, combinedPassphraseLength;
-	char *combinedPassphrase;
+	OFSecureData *combinedPassphrase;
+	char *combinedPassphraseItems;
+	unsigned char *outputItems;
 
 	[siteHash updateWithBuffer: _site.UTF8String
 			    length: _site.UTF8StringLength];
 
-	if (_output != NULL) {
-		of_explicit_memset(_output, 0, _length);
-		[self freeMemory: _output];
-	}
+	[_output release];
+	_output = nil;
+	_output = [[OFSecureData alloc] initWithCount: _length + 1
+				allowsSwappableMemory: false];
 
-	_output = [self allocMemoryWithSize: _length + 1];
-
-	passphraseLength = combinedPassphraseLength = strlen(_passphrase);
+	passphraseLength = combinedPassphraseLength = _passphrase.count - 1;
 	if (_keyFile != nil) {
 		if (SIZE_MAX - combinedPassphraseLength < _keyFile.count)
 			@throw [OFOutOfRangeException exception];
@@ -65,30 +65,26 @@
 		combinedPassphraseLength += _keyFile.count;
 	}
 
-	if ((combinedPassphrase = malloc(combinedPassphraseLength)) == NULL)
-		@throw [OFOutOfMemoryException
-		    exceptionWithRequestedSize: combinedPassphraseLength];
-	@try {
-		memcpy(combinedPassphrase, _passphrase, passphraseLength);
+	combinedPassphrase = [OFSecureData
+		    dataWithCount: combinedPassphraseLength
+	    allowsSwappableMemory: false];
+	combinedPassphraseItems = combinedPassphrase.mutableItems;
+	memcpy(combinedPassphraseItems, _passphrase.items, passphraseLength);
 
-		if (_keyFile != nil)
-			memcpy(combinedPassphrase + passphraseLength,
-			    _keyFile.items, _keyFile.count);
+	if (_keyFile != nil)
+		memcpy(combinedPassphraseItems + passphraseLength,
+		    _keyFile.items, _keyFile.count);
 
-		of_scrypt(8, 524288, 2, siteHash.digest,
-		    [siteHash.class digestSize], combinedPassphrase,
-		    combinedPassphraseLength, _output, _length, true);
-	} @finally {
-		of_explicit_memset(combinedPassphrase, 0,
-		    combinedPassphraseLength);
-		free(combinedPassphrase);
-	}
+	outputItems = _output.mutableItems;
+	of_scrypt(8, 524288, 2, siteHash.digest, [siteHash.class digestSize],
+	    combinedPassphraseItems, combinedPassphraseLength, outputItems,
+	    _length, true);
 
 	for (size_t i = 0; i < _length; i++)
-		_output[i] =
+		outputItems[i] =
 		    "123456789"
 		    "abcdefghijkmnopqrstuvwxyz"
 		    "ABCDEFGHJKLMNPQRSTUVWXYZ"
-		    "#$%-=?"[_output[i] & 0x3F];
+		    "#$%-=?"[outputItems[i] & 0x3F];
 }
 @end
