@@ -151,8 +151,13 @@ class ShowDetailsController: UITableViewController, UITextFieldDelegate {
         }
 
         let passphraseText = (passphraseField?.text ?? "") as NSString
-        let passphrase = of_strdup(passphraseText.utf8String!)!
-        generator.passphrase = UnsafePointer<CChar>(passphrase)
+        let passphraseLen =
+            passphraseText.lengthOfBytes(using: String.Encoding.utf8.rawValue)
+        let passphrase = OFSecureData(count: passphraseLen,
+                                      allowsSwappableMemory: false)
+        memcpy(passphrase.mutableItems, passphraseText.utf8String!,
+               passphraseLen)
+        generator.passphrase = passphrase
 
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let activityController = mainStoryboard.instantiateViewController(
@@ -160,22 +165,12 @@ class ShowDetailsController: UITableViewController, UITextFieldDelegate {
         navigationController?.view.addSubview(activityController.view)
 
         DispatchQueue.global(qos: .default).async {
-            OFException.try({
-                generator.derivePassword()
-            }, finally: {
-                if let keyFile = generator.keyFile as? OFMutableData {
-                    of_explicit_memset(keyFile.mutableItems, 0, keyFile.count)
-                }
-
-                of_explicit_memset(passphrase, 0, strlen(passphrase))
-                free(passphrase)
-            })
+            generator.derivePassword()
         }
 
-        let password = NSMutableString(bytes: generator.output,
+        let password = NSMutableString(bytes: generator.output.items,
                                        length: generator.length,
                                        encoding: String.Encoding.utf8.rawValue)!
-        of_explicit_memset(generator.output, 0, generator.length)
 
         DispatchQueue.main.sync {
             activityController.view.isHidden = true
