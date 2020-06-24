@@ -76,9 +76,18 @@
 		    _keyFile.items, _keyFile.count);
 
 	outputItems = _output.mutableItems;
-	of_scrypt(8, 524288, 2, siteHash.digest, [siteHash.class digestSize],
-	    combinedPassphraseItems, combinedPassphraseLength, outputItems,
-	    _length, true);
+	of_scrypt((of_scrypt_parameters_t){
+		.blockSize             = 8,
+		.costFactor            = 524288,
+		.parallelization       = 2,
+		.salt                  = siteHash.digest,
+		.saltLength            = [siteHash.class digestSize],
+		.password              = combinedPassphraseItems,
+		.passwordLength        = combinedPassphraseLength,
+		.key                   = outputItems,
+		.keyLength             = _length,
+		.allowsSwappableMemory = false
+	});
 
 	for (size_t i = 0; i < _length; i++)
 		outputItems[i] =
