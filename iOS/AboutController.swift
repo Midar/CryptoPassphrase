@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2016 - 2019 Jonathan Schleifer <js@heap.zone>
+ * Copyright (c) 2016 - 2020 Jonathan Schleifer <js@nil.im>
  *
- * https://heap.zone/git/cryptopassphrase.git
+ * https://fossil.nil.im/cryptopassphrase
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -62,12 +62,12 @@ class AboutController: UIViewController, UIWebViewDelegate {
             "<p name='free_software'>" +
             "  CryptoPassphrase is free software and the source code is" +
             "  available at" +
-            "  <a href='https://heap.zone/cryptopassphrase/'>here</a>." +
+            "  <a href='https://fossil.nil.im/cryptopassphrase'>here</a>." +
             "</p>" +
             "<p name='objfw'>" +
             "  It makes use of the" +
-            "  <a href='https://heap.zone/objfw/'>ObjFW</a> framework and" +
-            "  also uses its scrypt implementation." +
+            "  <a href='https://objfw.nil.im/'>ObjFW</a> framework and also" +
+            "  uses its scrypt implementation." +
             "</p>" +
             "</body>" +
             "</html>", baseURL: nil)
