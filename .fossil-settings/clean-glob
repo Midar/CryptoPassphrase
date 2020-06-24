@@ -1,0 +1,5 @@
+*.o
+*~
+cryptopassphrase
+iOS/DerivedData
+iOS/ObjFW
