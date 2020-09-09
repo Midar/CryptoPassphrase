@@ -122,7 +122,13 @@ showHelp(OFStream *output, bool verbose)
 		bool invalid = false;
 
 		@try {
-			generator.length = (size_t)lengthString.decimalValue;
+			unsigned long long length =
+			    lengthString.unsignedLongLongValue;
+
+			if (length > SIZE_MAX)
+				@throw [OFOutOfRangeException exception];
+
+			generator.length = (size_t)length;
 		} @catch (OFInvalidFormatException *e) {
 			invalid = true;
 		} @catch (OFOutOfRangeException *e) {
