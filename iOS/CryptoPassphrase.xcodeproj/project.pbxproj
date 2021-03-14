@@ -378,7 +378,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ObjFW/Frameworks",
 				);
-				HEADER_SEARCH_PATHS = ObjFW/include;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.3;
@@ -404,7 +403,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ObjFW/Frameworks",
 				);
-				HEADER_SEARCH_PATHS = ObjFW/include;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.3;

@@ -45,7 +45,8 @@ class SiteStorage: OFObject {
 
         var storage: [String: [NSNumber: AnyObject]]? = nil
         OFException.try({
-            let decoded = (OFData(contentsOfFile: path).messagePackValue)
+            let decoded = (OFData(contentsOfFile: path)
+                .objectByParsingMessagePack)
                 as? OFDictionary<OFString, OFDictionary<OFNumber, AnyObject>>
             storage =
                 (decoded?.nsObject as? [String: [NSNumber: AnyObject]]) ?? [:]
