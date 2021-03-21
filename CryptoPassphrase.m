@@ -155,7 +155,7 @@ showHelp(OFStream *output, bool verbose)
 	passphraseLength = strlen(passphraseCString);
 	@try {
 		passphrase = [OFSecureData dataWithCount: passphraseLength + 1
-				   allowsSwappableMemory: false];
+				   allowsSwappableMemory: true];
 		memcpy(passphrase.mutableItems, passphraseCString,
 		    passphraseLength + 1);
 	} @finally {

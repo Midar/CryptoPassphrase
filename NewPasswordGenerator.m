@@ -55,7 +55,7 @@
 	[_output release];
 	_output = nil;
 	_output = [[OFSecureData alloc] initWithCount: _length + 1
-				allowsSwappableMemory: false];
+				allowsSwappableMemory: true];
 
 	passphraseLength = combinedPassphraseLength = _passphrase.count - 1;
 	if (_keyFile != nil) {
@@ -67,7 +67,7 @@
 
 	combinedPassphrase = [OFSecureData
 		    dataWithCount: combinedPassphraseLength
-	    allowsSwappableMemory: false];
+	    allowsSwappableMemory: true];
 	combinedPassphraseItems = combinedPassphrase.mutableItems;
 	memcpy(combinedPassphraseItems, _passphrase.items, passphraseLength);
 
@@ -86,7 +86,7 @@
 		.passwordLength        = combinedPassphraseLength,
 		.key                   = outputItems,
 		.keyLength             = _length,
-		.allowsSwappableMemory = false
+		.allowsSwappableMemory = true
 	});
 
 	for (size_t i = 0; i < _length; i++)
