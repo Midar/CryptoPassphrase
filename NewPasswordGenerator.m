@@ -43,7 +43,7 @@
 - (void)derivePassword
 {
 	OFSHA384Hash *siteHash = [OFSHA384Hash
-	    cryptoHashWithAllowsSwappableMemory: true];
+	    hashWithAllowsSwappableMemory: true];
 	size_t passphraseLength, combinedPassphraseLength;
 	OFSecureData *combinedPassphrase;
 	char *combinedPassphraseItems;
@@ -76,7 +76,7 @@
 		    _keyFile.items, _keyFile.count);
 
 	outputItems = _output.mutableItems;
-	of_scrypt((of_scrypt_parameters_t){
+	OFScrypt((OFScryptParameters){
 		.blockSize             = 8,
 		.costFactor            = 524288,
 		.parallelization       = 2,

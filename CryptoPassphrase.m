@@ -50,7 +50,7 @@ showHelp(OFStream *output, bool verbose)
 - (void)applicationDidFinishLaunching
 {
 	OFString *keyFilePath, *lengthString;
-	const of_options_parser_option_t options[] = {
+	const OFOptionsParserOption options[] = {
 		{ 'h', @"help", 0, NULL, NULL },
 		{ 'k', @"keyfile", 1, NULL, &keyFilePath },
 		{ 'l', @"length", 1, NULL, &lengthString },
@@ -60,7 +60,7 @@ showHelp(OFStream *output, bool verbose)
 	};
 	OFOptionsParser *optionsParser =
 	    [OFOptionsParser parserWithOptions: options];
-	of_unichar_t option;
+	OFUnichar option;
 	OFMutableData *keyFile = nil;
 	OFString *prompt;
 	const char *promptCString;
@@ -71,19 +71,19 @@ showHelp(OFStream *output, bool verbose)
 	while ((option = [optionsParser nextOption]) != '\0') {
 		switch (option) {
 		case 'h':
-			showHelp(of_stdout, true);
+			showHelp(OFStdOut, true);
 
 			[OFApplication terminate];
 
 			break;
 		case ':':
 			if (optionsParser.lastLongOption != nil)
-				[of_stderr writeFormat:
+				[OFStdErr writeFormat:
 				    @"%@: Argument for option --%@ missing\n",
 				    [OFApplication programName],
 				    optionsParser.lastLongOption];
 			else
-				[of_stderr writeFormat:
+				[OFStdErr writeFormat:
 				    @"%@: Argument for option -%C missing\n",
 				    [OFApplication programName],
 				    optionsParser.lastOption];
@@ -92,12 +92,12 @@ showHelp(OFStream *output, bool verbose)
 			break;
 		case '?':
 			if (optionsParser.lastLongOption != nil)
-				[of_stderr writeFormat:
+				[OFStdErr writeFormat:
 				    @"%@: Unknown option: --%@\n",
 				    [OFApplication programName],
 				    optionsParser.lastLongOption];
 			else
-				[of_stderr writeFormat:
+				[OFStdErr writeFormat:
 				    @"%@: Unknown option: -%C\n",
 				    [OFApplication programName],
 				    optionsParser.lastOption];
@@ -108,7 +108,7 @@ showHelp(OFStream *output, bool verbose)
 	}
 
 	if (optionsParser.remainingArguments.count != 1) {
-		showHelp(of_stderr, false);
+		showHelp(OFStdErr, false);
 
 		[OFApplication terminateWithStatus: 1];
 	}
@@ -136,7 +136,7 @@ showHelp(OFStream *output, bool verbose)
 		}
 
 		if (invalid) {
-			[of_stderr writeFormat:
+			[OFStdErr writeFormat:
 			    @"%@: Invalid length: %@\n",
 			    [OFApplication programName], lengthString];
 
@@ -159,11 +159,11 @@ showHelp(OFStream *output, bool verbose)
 		memcpy(passphrase.mutableItems, passphraseCString,
 		    passphraseLength + 1);
 	} @finally {
-		of_explicit_memset(passphraseCString, '\0', passphraseLength);
+		OFZeroMemory(passphraseCString, passphraseLength);
 	}
 
 	if (_repeat) {
-		of_string_encoding_t encoding = [OFLocale encoding];
+		OFStringEncoding encoding = [OFLocale encoding];
 
 		prompt = [OFString stringWithFormat:
 		    @"Repeat passphrase for site \"%@\": ", generator.site];
@@ -171,22 +171,19 @@ showHelp(OFStream *output, bool verbose)
 		    getpass([prompt cStringWithEncoding: encoding]);
 
 		if (strcmp(passphraseCString, passphrase.items) != 0) {
-			[of_stderr writeString: @"Passphrases do not match!\n"];
+			[OFStdErr writeString: @"Passphrases do not match!\n"];
 			[OFApplication terminateWithStatus: 1];
 		}
 
-		of_explicit_memset(passphraseCString, '\0',
-		    strlen(passphraseCString));
+		OFZeroMemory(passphraseCString, strlen(passphraseCString));
 	}
 
 	generator.keyFile = keyFile;
 	generator.passphrase = passphrase;
 
 	[generator derivePassword];
-	[of_stdout writeBuffer: generator.output.items
-			length: generator.length];
-	[of_stdout writeBuffer: "\n"
-			length: 1];
+	[OFStdOut writeBuffer: generator.output.items length: generator.length];
+	[OFStdOut writeBuffer: "\n" length: 1];
 
 	[OFApplication terminate];
 }
