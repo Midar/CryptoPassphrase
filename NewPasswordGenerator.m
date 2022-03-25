@@ -51,6 +51,7 @@
 
 	[siteHash updateWithBuffer: _site.UTF8String
 			    length: _site.UTF8StringLength];
+	[siteHash calculate];
 
 	[_output release];
 	_output = nil;
