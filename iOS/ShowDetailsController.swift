@@ -131,7 +131,9 @@ class ShowDetailsController: UITableViewController, UITextFieldDelegate {
         }
     }
 
-    private func generateWithCallback(_ block: (_: NSMutableString) -> ()) {
+    private func generateWithCallback(
+        _ block: @escaping (_: NSMutableString) -> ()
+    ) {
         let generator: PasswordGenerator = isLegacy ?
             LegacyPasswordGenerator() : NewPasswordGenerator()
         generator.site = name.ofObject
@@ -166,15 +168,16 @@ class ShowDetailsController: UITableViewController, UITextFieldDelegate {
 
         DispatchQueue.global(qos: .default).async {
             generator.derivePassword()
-        }
 
-        let password = NSMutableString(bytes: generator.output.items,
-                                       length: generator.length,
-                                       encoding: String.Encoding.utf8.rawValue)!
+            let password = NSMutableString(
+                bytes: generator.output.items!,
+                length: generator.length,
+                encoding: String.Encoding.utf8.rawValue)!
 
-        DispatchQueue.main.sync {
-            activityController.view.isHidden = true
-            block(password)
+            DispatchQueue.main.sync {
+                activityController.view.isHidden = true
+                block(password)
+            }
         }
     }
 
