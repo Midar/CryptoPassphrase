@@ -59,8 +59,8 @@
 		4B93656D22B5ADA00099DD08 /* HTTPServerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPServerDelegate.swift; sourceTree = "<group>"; };
 		4B93656F22B5AE2C0099DD08 /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		4B93657122B5B1FB0099DD08 /* AddSiteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSiteController.swift; sourceTree = "<group>"; };
-		4B9525231F96BB820095F259 /* ObjFW.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjFW.framework; path = ObjFW/Frameworks/ObjFW.framework; sourceTree = "<group>"; };
-		4B9525241F96BB820095F259 /* ObjFWBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjFWBridge.framework; path = ObjFW/Frameworks/ObjFWBridge.framework; sourceTree = "<group>"; };
+		4B9525231F96BB820095F259 /* ObjFW.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjFW.framework; path = Frameworks/ObjFW.framework; sourceTree = "<group>"; };
+		4B9525241F96BB820095F259 /* ObjFWBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjFWBridge.framework; path = Frameworks/ObjFWBridge.framework; sourceTree = "<group>"; };
 		4BA115CD1DA9432D007ED4EA /* LegacyPasswordGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LegacyPasswordGenerator.h; path = ../LegacyPasswordGenerator.h; sourceTree = "<group>"; };
 		4BA115CE1DA9432D007ED4EA /* LegacyPasswordGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LegacyPasswordGenerator.m; path = ../LegacyPasswordGenerator.m; sourceTree = "<group>"; };
 		4BA115CF1DA9432D007ED4EA /* NewPasswordGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewPasswordGenerator.h; path = ../NewPasswordGenerator.h; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 		4B2E52D41DA942840040D091 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1330;
+				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = "Jonathan Schleifer";
 				TargetAttributes = {
 					4B2E52DB1DA942840040D091 = {
@@ -378,7 +378,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/ObjFW/Frameworks",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -403,7 +403,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/ObjFW/Frameworks",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
