@@ -66,7 +66,7 @@ class SelectKeyFileController: UITableViewController {
         httpServerThread.start()
     }
 
-    deinit {
+    override func viewDidDisappear(_ animated: Bool) {
         httpServerThread.runLoop.stop()
         httpServerThread.join()
     }
