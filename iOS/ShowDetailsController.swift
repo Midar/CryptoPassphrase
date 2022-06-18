@@ -153,8 +153,8 @@ class ShowDetailsController: UITableViewController, UITextFieldDelegate {
         }
 
         let passphraseText = (passphraseField?.text ?? "") as NSString
-        let passphraseLen =
-            passphraseText.lengthOfBytes(using: String.Encoding.utf8.rawValue)
+        let passphraseLen = passphraseText.lengthOfBytes(
+            using: String.Encoding.utf8.rawValue) + 1
         let passphrase = OFSecureData(count: passphraseLen,
                                       allowsSwappableMemory: false)
         memcpy(passphrase.mutableItems, passphraseText.utf8String!,
