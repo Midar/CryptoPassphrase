@@ -147,8 +147,8 @@ class ShowDetailsController: UITableViewController, UITextFieldDelegate {
                 return
             }
 
-            let keyFilePath =
-                documentDirectory.ofObject.appending(keyFile.ofObject)
+            let keyFilePath = documentDirectory.ofObject.appendingPathComponent(
+                keyFile.ofObject)
             generator.keyFile = OFMutableData(contentsOfFile: keyFilePath)
         }
 
