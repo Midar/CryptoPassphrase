@@ -34,19 +34,18 @@ class SiteStorage: OFObject {
 
     override init() {
         let fileManager = OFFileManager.default
-        let userDataPath = OFSystemInfo.userDataPath!
+        let userDataURL = OFSystemInfo.userDataURL!
 
-        if !fileManager.directoryExists(atPath: userDataPath) {
-            fileManager.createDirectory(atPath: userDataPath)
+        if !fileManager.directoryExists(at: userDataURL) {
+            fileManager.createDirectory(at: userDataURL)
         }
 
-        let path = userDataPath.appendingPathComponent(
+        let URL = userDataURL.appendingPathComponent(
             OFString(utf8String: "sites.msgpack"))
 
         var storage: [String: [NSNumber: AnyObject]]? = nil
         OFException.try({
-            let decoded = (OFData(contentsOfFile: path)
-                .objectByParsingMessagePack)
+            let decoded = (OFData(contentsOf: URL).objectByParsingMessagePack)
                 as? OFDictionary<OFString, OFDictionary<OFNumber, AnyObject>>
             storage =
                 (decoded?.nsObject as? [String: [NSNumber: AnyObject]]) ?? [:]
@@ -54,17 +53,17 @@ class SiteStorage: OFObject {
             storage = [:]
         })
 
-        self.path = path
+        self.path = URL.fileSystemRepresentation!
         self.storage = storage!
         self.sites = self.storage.keys.sorted()
     }
 
     func sites(withFilter filter: String?) -> [String] {
         return storage.keys.sorted().filter({ (name) in
-            if let filter = filter {
-                return name.localizedCaseInsensitiveContains(filter)
+            if filter == nil || filter!.isEmpty {
+                return true
             }
-            return true
+            return name.localizedCaseInsensitiveContains(filter!)
         })
     }
 
