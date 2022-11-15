@@ -47,7 +47,7 @@ showHelp(OFStream *output, bool verbose)
 }
 
 @implementation CryptoPassphrase
-- (void)applicationDidFinishLaunching
+- (void)applicationDidFinishLaunching: (OFNotification *)notification
 {
 	OFString *keyFilePath, *lengthString;
 	const OFOptionsParserOption options[] = {
