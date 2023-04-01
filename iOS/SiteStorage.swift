@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 - 2021 Jonathan Schleifer <js@nil.im>
+ * Copyright (c) 2016 - 2023 Jonathan Schleifer <js@nil.im>
  *
  * https://fossil.nil.im/cryptopassphrase
  *
@@ -28,24 +28,24 @@ class SiteStorage: OFObject {
     private static let legacyField = NSNumber(value: 1)
     private static let keyFileField = NSNumber(value: 2)
 
-    private var path: OFString
+    private var IRI: OFIRI
     private var storage: [String: [NSNumber: AnyObject]]
     private var sites: [String]
 
     override init() {
         let fileManager = OFFileManager.default
-        let userDataURL = OFSystemInfo.userDataURL!
+        let userDataIRI = OFSystemInfo.userDataIRI!
 
-        if !fileManager.directoryExists(at: userDataURL) {
-            fileManager.createDirectory(at: userDataURL)
+        if !fileManager.directoryExists(at: userDataIRI) {
+            fileManager.createDirectory(at: userDataIRI)
         }
 
-        let URL = userDataURL.appendingPathComponent(
+        let IRI = userDataIRI.appendingPathComponent(
             OFString(utf8String: "sites.msgpack"))
 
         var storage: [String: [NSNumber: AnyObject]]? = nil
         OFException.try({
-            let decoded = (OFData(contentsOf: URL).objectByParsingMessagePack)
+            let decoded = (OFData(contentsOf: IRI).objectByParsingMessagePack)
                 as? OFDictionary<OFString, OFDictionary<OFNumber, AnyObject>>
             storage =
                 (decoded?.nsObject as? [String: [NSNumber: AnyObject]]) ?? [:]
@@ -53,7 +53,7 @@ class SiteStorage: OFObject {
             storage = [:]
         })
 
-        self.path = URL.fileSystemRepresentation!
+        self.IRI = IRI
         self.storage = storage!
         self.sites = self.storage.keys.sorted()
     }
@@ -115,7 +115,7 @@ class SiteStorage: OFObject {
     private func update() {
         let ofStorage = (storage as NSDictionary).ofObject
 
-        ofStorage.messagePackRepresentation.write(toFile: path)
+        ofStorage.messagePackRepresentation.write(to: IRI)
         sites = storage.keys.sorted()
     }
 }

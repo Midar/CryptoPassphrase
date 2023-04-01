@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 - 2021 Jonathan Schleifer <js@nil.im>
+ * Copyright (c) 2016 - 2023 Jonathan Schleifer <js@nil.im>
  *
  * https://fossil.nil.im/cryptopassphrase
  *
@@ -32,7 +32,7 @@
 OF_APPLICATION_DELEGATE(OFAppDelegate)
 
 @implementation OFAppDelegate
-- (void)applicationDidFinishLaunching
+- (void)applicationDidFinishLaunching: (OFNotification *)notification
 {
 	int *argc;
 	char ***argv;
