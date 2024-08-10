@@ -1,5 +1,5 @@
 project('CryptoPassphrase', 'objc',
-  version: '1.3',
+  version: '1.0',
   meson_version: '>= 1.5.0')
 
 objfw_dep = dependency('objfw')
