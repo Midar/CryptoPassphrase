@@ -23,21 +23,6 @@ class SelectKeyFileController: UITableViewController {
     public var addSiteController: AddSiteController?
 
     private var keyFiles: [String] = []
-    private var httpServer: OFHTTPServer
-    private var httpServerDelegate: HTTPServerDelegate
-    private var httpServerThread: OFThread
-
-    required init?(coder aDecoder: NSCoder) {
-        httpServer = OFHTTPServer()
-        httpServer.host = "127.0.0.1".ofObject
-
-        httpServerDelegate = HTTPServerDelegate()
-        httpServer.delegate = self.httpServerDelegate
-
-        httpServerThread = OFThread()
-
-        super.init(coder: aDecoder)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,13 +43,6 @@ class SelectKeyFileController: UITableViewController {
             navigationController?.popViewController(animated: true)
             return
         }
-
-        httpServerThread.start()
-    }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        httpServerThread.runLoop.stop()
-        httpServerThread.join()
     }
 
     override func tableView(_ tableView: UITableView,
@@ -91,30 +69,5 @@ class SelectKeyFileController: UITableViewController {
             indexPath.row > 0 ? keyFiles[indexPath.row - 1] : "None"
 
         self.navigationController?.popViewController(animated: true)
-    }
-
-    @IBAction func upload(_ sender: Any?) {
-        let timer = OFTimer.scheduledTimer(withTimeInterval: 0,
-                                           repeats: false) { (OFTimer) in
-            self.httpServer.port = 0
-            self.httpServer.start()
-
-            let message =
-                "Navigate to http://\(self.httpServer.host!.nsObject):" +
-                "\(self.httpServer.port)/ in your browser.\n\n" +
-                "Press OK when done."
-            let alert = UIAlertController(title: "Server Running",
-                                          message: message,
-                                          preferredStyle: .alert)
-            alert.addAction(
-                UIAlertAction(title: "OK", style: .default, handler: nil))
-
-            DispatchQueue.main.sync {
-                self.present(alert, animated: true) {
-                    self.httpServer.stop()
-                }
-            }
-        }
-        httpServerThread.runLoop.add(timer)
     }
 }

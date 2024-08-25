@@ -15,7 +15,6 @@
 		4B5BCEFB22B5CF3200E551BD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5BCEFA22B5CF3200E551BD /* MainViewController.swift */; };
 		4B5BCEFD22B5D98800E551BD /* SelectKeyFileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5BCEFC22B5D98800E551BD /* SelectKeyFileController.swift */; };
 		4B5BCEFF22B5E36900E551BD /* ShowDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5BCEFE22B5E36900E551BD /* ShowDetailsController.swift */; };
-		4B93656E22B5ADA00099DD08 /* HTTPServerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93656D22B5ADA00099DD08 /* HTTPServerDelegate.swift */; };
 		4B93657022B5AE2C0099DD08 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93656F22B5AE2C0099DD08 /* AboutController.swift */; };
 		4B93657222B5B1FB0099DD08 /* AddSiteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93657122B5B1FB0099DD08 /* AddSiteController.swift */; };
 		4B9525251F96BB900095F259 /* ObjFW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B9525231F96BB820095F259 /* ObjFW.framework */; };
@@ -56,7 +55,6 @@
 		4B5BCEFA22B5CF3200E551BD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4B5BCEFC22B5D98800E551BD /* SelectKeyFileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectKeyFileController.swift; sourceTree = "<group>"; };
 		4B5BCEFE22B5E36900E551BD /* ShowDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsController.swift; sourceTree = "<group>"; };
-		4B93656D22B5ADA00099DD08 /* HTTPServerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPServerDelegate.swift; sourceTree = "<group>"; };
 		4B93656F22B5AE2C0099DD08 /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		4B93657122B5B1FB0099DD08 /* AddSiteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSiteController.swift; sourceTree = "<group>"; };
 		4B9525231F96BB820095F259 /* ObjFW.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjFW.framework; path = Frameworks/ObjFW.framework; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 				4B93656F22B5AE2C0099DD08 /* AboutController.swift */,
 				4B93657122B5B1FB0099DD08 /* AddSiteController.swift */,
 				4B5BCEF822B5B94C00E551BD /* AppDelegate.swift */,
-				4B93656D22B5ADA00099DD08 /* HTTPServerDelegate.swift */,
 				4B2E52F01DA942840040D091 /* Info.plist */,
 				4B2E52ED1DA942840040D091 /* LaunchScreen.storyboard */,
 				4B2E52E81DA942840040D091 /* Main.storyboard */,
@@ -223,7 +220,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B5BCEF922B5B94C00E551BD /* AppDelegate.swift in Sources */,
-				4B93656E22B5ADA00099DD08 /* HTTPServerDelegate.swift in Sources */,
 				4B5BCEFB22B5CF3200E551BD /* MainViewController.swift in Sources */,
 				4B93657222B5B1FB0099DD08 /* AddSiteController.swift in Sources */,
 				4BA115D21DA9432D007ED4EA /* LegacyPasswordGenerator.m in Sources */,
