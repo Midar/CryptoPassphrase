@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 - 2023 Jonathan Schleifer <js@nil.im>
+ * Copyright (c) 2016 - 2024 Jonathan Schleifer <js@nil.im>
  *
  * https://fl.nil.im/cryptopassphrase
  *
