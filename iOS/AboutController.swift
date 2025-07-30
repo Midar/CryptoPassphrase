@@ -53,12 +53,12 @@ class AboutController: UIViewController, UIWebViewDelegate {
             "  CryptoPassphrase \(version ?? "")" +
             "</div>" +
             "<div id='copyright'>" +
-            "  Copyright © 2016 - 2021 Jonathan Schleifer" +
+            "  Copyright © 2016 - 2024 Jonathan Schleifer" +
             "</div>" +
             "<p name='free_software'>" +
             "  CryptoPassphrase is free software and the source code is" +
             "  available at" +
-            "  <a href='https://fossil.nil.im/cryptopassphrase'>here</a>." +
+            "  <a href='https://git.nil.im/js/CryptoPassphrase'>here</a>." +
             "</p>" +
             "<p name='objfw'>" +
             "  It makes use of the" +
